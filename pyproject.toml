@@ -1,0 +1,92 @@
+[tool.poetry]
+name = "FastAPI Mount Examples"
+version = "0.1.0"
+description = ""
+authors = ["hasansezertasan <hasansezertasan@gmail.com>"]
+readme = "README.md"
+maintainers = ["hasansezertasan <hasansezertasan@gmail.com>"]
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+line_length = 120
+split_on_trailing_comma = true
+skip_glob = ["**/alembic/**", "**/migrations/**"]
+
+
+[tool.black]
+line-length = 120
+target-version = ['py311']
+exclude = '''
+(
+  /(
+      \.eggs
+    | \.git
+    | \.hg
+    | \.mypy_cache
+    | \.nox
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+    | alembic
+  )/
+)
+'''
+
+
+[tool.poe.tasks]
+line-count = "pygount --format=summary"
+test = "pytest -v -s"
+black = "black ."
+flake8 = "flake8 ."
+isort = "isort ."
+bif = ["black", "isort", "flake8"]
+run = "uvicorn --port 5000 --reload main:app"
+install = "poetry install --all-extras"
+clean = "frenchmaid clean"
+requirements = "poetry export -f requirements.txt --output pyproject.txt --without-hashes"
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.12"
+uvicorn = "0.22.0"
+FastAPI = "0.101.1"
+Flask = "2.3.2"
+Tornado = "6.3.3"
+Starlette = "^0.27.0"
+Django = "^4.2.4"
+gradio = "^3.40.0"
+pywebio = "^1.8.2"
+nicegui = "^1.3.9"
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.25.1"
+isort = "^5.12.0"
+black = { extras = ["jupyter"], version = "^23.7.0" }
+flake8 = "6.1.0"
+pre-commit = "^3.3.3"
+poethepoet = "^0.22.0"
+frenchmaid = "^0.2.3"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4.0"
+
+# poetry install --with docs
+[tool.poetry.group.docs]
+optional = true
+
+[tool.poetry.group.docs.dependencies]
+pdoc3 = "0.10.0"
+
+[tool.poetry.group.analysis]
+optional = true
+
+[tool.poetry.group.analysis.dependencies]
+pygount = "1.6.1"
