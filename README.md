@@ -6,19 +6,19 @@ The goal of this project is to provide examples of how to mount sub applications
 
 | Framework   | Mount | Middleware  | Cookies | JWT   | Dependencies  |
 | :---        | :---: | :---:       | :---:   | :---: | :---:         |
-| FastAPI     | - [x] | - [ ]       | - [x]   | - [ ] | - [ ]         |
-| Flask       | - [x] | - [x]       | - [x]   | - [ ] | - [ ]         |
-| Django      | - [x] | - [ ]       | - [ ]   | - [ ] | - [ ]         |
-| Starlette   | - [x] | - [ ]       | - [ ]   | - [ ] | - [ ]         |
-| Tornado     | - [ ] | - [ ]       | - [ ]   | - [ ] | - [ ]         |
-| Bottle      | - [ ] | - [ ]       | - [ ]   | - [ ] | - [ ]         |
-| Robyn       | - [ ] | - [ ]       | - [ ]   | - [ ] | - [ ]         |
-| GradIO      | - [x] | - [ ]       | - [ ]   | - [ ] | - [ ]         |
-| PyWebIO     | - [x] | - [ ]       | - [ ]   | - [ ] | - [ ]         |
-| NiceGUI     | - [ ] | - [ ]       | - [ ]   | - [ ] | - [ ]         |
-| Reflex      | - [ ] | - [ ]       | - [ ]   | - [ ] | - [ ]         |
-| Plotly Dash | - [ ] | - [ ]       | - [ ]   | - [ ] | - [ ]         |
-| Streamlit   | - [ ] | - [ ]       | - [ ]   | - [ ] | - [ ]         |
+| Flask       |✅     |✅          |✅       |🔳    |🔳             |
+| FastAPI     |✅     |🔳          |✅       |🔳    |🔳             |
+| Django      |✅     |🔳          |🔳       |🔳    |🔳             |
+| Starlette   |✅     |🔳          |🔳       |🔳    |🔳             |
+| Tornado     |🔳     |🔳          |🔳       |🔳    |🔳             |
+| Bottle      |🔳     |🔳          |🔳       |🔳    |🔳             |
+| Robyn       |🔳     |🔳          |🔳       |🔳    |🔳             |
+| GradIO      |✅     |🔳          |🔳       |🔳    |🔳             |
+| PyWebIO     |✅     |🔳          |🔳       |🔳    |🔳             |
+| NiceGUI     |🔳     |🔳          |🔳       |🔳    |🔳             |
+| Reflex      |🔳     |🔳          |🔳       |🔳    |🔳             |
+| Plotly Dash |🔳     |🔳          |🔳       |🔳    |🔳             |
+| Streamlit   |🔳     |🔳          |🔳       |🔳    |🔳             |
 
 ## How to run
 
