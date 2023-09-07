@@ -1,19 +1,31 @@
+# from starlette.middleware.wsgi import WSGIMiddleware
+from a2wsgi import WSGIMiddleware
 from fastapi import FastAPI, Request
 from starlette.middleware.sessions import SessionMiddleware
-from starlette.middleware.wsgi import WSGIMiddleware
 
+from src.applications.bottle.app import app as bottle_app
 from src.applications.django.app import application as django_application
 from src.applications.fastapi.app import app as fastapi_app
 from src.applications.fastapi.router import router as fastapi_router
 from src.applications.flask.app import app as sub_app
 from src.applications.gradio.app import app as gradio_app
+from src.applications.litestar.app import app as litestar_app
 from src.applications.pywebio.app import app as pywebio_app
 from src.applications.starlette.app import app as starlette_app
-from src.applications.tornado.app import app as tornado_app
 
 app = FastAPI(
     title="FastAPI Mount Examples",
-    description="The goal of this project is to provide examples of how to mount sub applications written in different frameworks to FastAPI. \n Available sub applications: \n - FastAPI \n - Flask \n - Django \n - Tornado \n - Starlette \n - Gradio \n - PyWebIO",
+    description="The goal of this project is to provide examples of how to mount "
+    "sub applications written in different frameworks to FastAPI. ",
+    version="0.1.0",
+    openapi_url="/openapi.json",
+    docs_url="/docs",
+    redoc_url="/redoc",
+    license_info={
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+    },
+    terms_of_service="http://fastapi.tiangolo.com/terms/",
     responses={
         404: {
             "description": "Not found",
@@ -42,10 +54,14 @@ app.mount(
     name="django",
 )
 app.mount(
-    path="/tornado",
-    app=WSGIMiddleware(tornado_app),
-    # app=tornado_app,
-    name="tornado",
+    path="/bottle",
+    app=WSGIMiddleware(bottle_app),
+    name="bottle",
+)
+app.mount(
+    path="/litestar",
+    app=litestar_app,
+    name="litestar",
 )
 app.mount(
     path="/starlette",

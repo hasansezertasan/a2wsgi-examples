@@ -10,8 +10,9 @@ class Applications(str, enum.Enum):
     FLASK = "flask"
     DJANGO = "django"
     FASTAPI = "fastapi"
-    TORNADO = "tornado"
     STARLETTE = "starlette"
+    LITESTAR = "litestar"
+    BOTTLE = "bottle"
     GRADIO = "gradio"
     PYWEBIO = "pywebio"
 

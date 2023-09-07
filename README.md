@@ -1,6 +1,6 @@
 # FastAPI Mount Examples
 
-The goal of this project is to provide examples of how to mount sub applications written in different frameworks to FastAPI.
+The goal of this project is to provide examples to integrate / use as sub application written in different frameworks with FastAPI.
 
 ## Progress
 
@@ -10,9 +10,14 @@ The goal of this project is to provide examples of how to mount sub applications
 | FastAPI     |✅     |🔳          |✅       |🔳    |🔳             |
 | Django      |✅     |🔳          |🔳       |🔳    |🔳             |
 | Starlette   |✅     |🔳          |🔳       |🔳    |🔳             |
-| Tornado     |🔳     |🔳          |🔳       |🔳    |🔳             |
-| Bottle      |🔳     |🔳          |🔳       |🔳    |🔳             |
+| Bottle      |✅     |🔳          |🔳       |🔳    |🔳             |
+| Litestar    |✅     |🔳          |🔳       |🔳    |🔳             |
+| Quart       |🔳     |🔳          |🔳       |🔳    |🔳             |
 | Robyn       |🔳     |🔳          |🔳       |🔳    |🔳             |
+| Falcon      |🔳     |🔳          |🔳       |🔳    |🔳             |
+| HUG         |🔳     |🔳          |🔳       |🔳    |🔳             |
+| Tornado     |🔳     |🔳          |🔳       |🔳    |🔳             |
+| aiohttp     |🔳     |🔳          |🔳       |🔳    |🔳             |
 | GradIO      |✅     |🔳          |🔳       |🔳    |🔳             |
 | PyWebIO     |✅     |🔳          |🔳       |🔳    |🔳             |
 | NiceGUI     |🔳     |🔳          |🔳       |🔳    |🔳             |
@@ -22,24 +27,28 @@ The goal of this project is to provide examples of how to mount sub applications
 
 ## How to run
 
-- Requirements
-  - Docker
-  - Docker Compose
-- Steps
-  1. Clone the repository
-  2. Go to the project directory
-  3. Run `docker-compose up --build`
-  4. Go to `http://localhost:8000/docs` to see the API documentation
-  5. Enjoy!
+### Requirements
+
+- Docker
+- Docker Compose
+
+### Steps
+
+1. Clone the repository
+2. Run `docker-compose up --build`
+3. Go to `http://localhost:8000/docs` to see the API documentation
+4. Enjoy!
 
 ## Contributing
 
 If you would like to contribute to this project, please open an issue or submit a pull request.
 
-## Authors
+## Author
 
 - [hasansezertasan](https://www.github.com/hasansezertasan)
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+It's an open source project mainly for educational purposes. Feel free to use it however you want.
