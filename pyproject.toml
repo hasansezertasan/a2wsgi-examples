@@ -6,6 +6,31 @@ authors = ["hasansezertasan <hasansezertasan@gmail.com>"]
 readme = "README.md"
 maintainers = ["hasansezertasan <hasansezertasan@gmail.com>"]
 
+[tool.ruff]
+# Run `ruff linter` command to see all available linters and their descriptions
+target-version = "py311"
+line-length = 120
+select = [
+  # "B",
+  # "C",
+  "E",
+  "F",
+  "W",
+  "I",
+  "B9",
+]
+ignore = [
+  "B008", # do not perform function calls in argument defaults
+  "C901", # too complex
+  "E501", # line too long, handled by black
+  "F401", # imported but unused
+  "E402", # module level import not at top of file
+  "E712", # comparison to True should be 'if cond is True:' or 'if cond:'
+  "F821", # undefined name
+]
+exclude = ["alembic", "migrations"]
+show-fixes = true
+
 [tool.isort]
 profile = "black"
 multi_line_output = 3
@@ -42,14 +67,13 @@ exclude = '''
 
 
 [tool.poe.tasks]
+black = "black ."
+isort = "isort ."
+ruff = "ruff ."
+bir = ["black", "isort", "ruff"]
 line-count = "pygount --format=summary"
 test = "pytest -v -s"
-black = "black ."
-flake8 = "flake8 ."
-isort = "isort ."
-bif = ["black", "isort", "flake8"]
 run = "uvicorn --port 5000 --reload main:app"
-install = "poetry install --all-extras"
 clean = "frenchmaid clean"
 requirements = "poetry export -f requirements.txt --output pyproject.txt --without-hashes"
 
@@ -69,26 +93,14 @@ litestar = "^2.0.1"
 
 
 [tool.poetry.group.dev.dependencies]
-ipykernel = "^6.25.1"
+ipykernel = "^6.25.2"
 isort = "^5.12.0"
-black = { extras = ["jupyter"], version = "^23.7.0" }
-flake8 = "6.1.0"
-pre-commit = "^3.3.3"
-poethepoet = "^0.22.0"
+black = { extras = ["jupyter"], version = "^23.9.1" }
+ruff = "^0.0.287"
+pre-commit = "^3.4.0"
+poethepoet = "^0.22.1"
 frenchmaid = "^0.2.3"
+pygount = "1.6.1"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^7.4.0"
-
-# poetry install --with docs
-[tool.poetry.group.docs]
-optional = true
-
-[tool.poetry.group.docs.dependencies]
-pdoc3 = "0.10.0"
-
-[tool.poetry.group.analysis]
-optional = true
-
-[tool.poetry.group.analysis.dependencies]
-pygount = "1.6.1"
