@@ -18,13 +18,14 @@ The goal of this project is to provide examples to integrate / use as sub applic
 | Falcon      |❌     |🔳          |🔳       |🔳    |🔳             |
 | HUG         |❌     |🔳          |🔳       |🔳    |🔳             |
 | Tornado     |❌     |🔳          |🔳       |🔳    |🔳             |
-| aiohttp     |🔳     |🔳          |🔳       |🔳    |🔳             |
+| aiohttp     |❌     |🔳          |🔳       |🔳    |🔳             |
 | GradIO      |✅     |🔳          |🔳       |🔳    |🔳             |
 | PyWebIO     |✅     |🔳          |🔳       |🔳    |🔳             |
+| Flet        |✅     |🔳          |🔳       |🔳    |🔳             |
 | NiceGUI     |🚧     |🔳          |🔳       |🔳    |🔳             |
 | Reflex      |🚧     |🔳          |🔳       |🔳    |🔳             |
-| Plotly Dash |🔳     |🔳          |🔳       |🔳    |🔳             |
 | Streamlit   |🔳     |🔳          |🔳       |🔳    |🔳             |
+| Plotly Dash |🔳     |🔳          |🔳       |🔳    |🔳             |
 
 Emoji key:
 
