@@ -1,13 +1,15 @@
 # from starlette.middleware.wsgi import WSGIMiddleware
-from a2wsgi import WSGIMiddleware
+from a2wsgi import ASGIMiddleware, WSGIMiddleware
 from fastapi import FastAPI, Request
 from starlette.middleware.sessions import SessionMiddleware
 
+from src.applications.aiohttp.app import app as aiohttp_app
 from src.applications.bottle.app import app as bottle_app
 from src.applications.django.app import application as django_application
 from src.applications.fastapi.app import app as fastapi_app
 from src.applications.fastapi.router import router as fastapi_router
-from src.applications.flask.app import app as sub_app
+from src.applications.flask.app import app as flask_app
+from src.applications.flet.app import app as flet_app
 from src.applications.gradio.app import app as gradio_app
 from src.applications.litestar.app import app as litestar_app
 from src.applications.pywebio.app import app as pywebio_app
@@ -39,14 +41,28 @@ app = FastAPI(
 )
 app.add_middleware(SessionMiddleware, secret_key="SECRET_KEY")
 app.mount(
+    path="/aiohttp",
+    app=ASGIMiddleware(aiohttp_app),
+    name="aiohttp",
+)
+app.mount(
     path="/fastapi",
     app=fastapi_app,
     name="fastapi",
 )
+app.include_router(
+    router=fastapi_router,
+    tags=["Default"],
+)
 app.mount(
     path="/flask",
-    app=WSGIMiddleware(sub_app),
+    app=WSGIMiddleware(flask_app),
     name="flask",
+)
+app.mount(
+    path="/flet",
+    app=flet_app,
+    name="flet",
 )
 app.mount(
     path="/django",
@@ -64,11 +80,6 @@ app.mount(
     name="litestar",
 )
 app.mount(
-    path="/starlette",
-    app=starlette_app,
-    name="starlette",
-)
-app.mount(
     path="/gradio",
     app=gradio_app,
     name="gradio",
@@ -78,9 +89,10 @@ app.mount(
     app=pywebio_app,
     name="pywebio",
 )
-app.include_router(
-    router=fastapi_router,
-    tags=["Default"],
+app.mount(
+    path="/starlette",
+    app=starlette_app,
+    name="starlette",
 )
 
 
