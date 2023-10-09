@@ -1,20 +1,9 @@
-import enum
-
 from fastapi import APIRouter, Path
 from fastapi.responses import RedirectResponse
 
+from src.applications.schemas import Applications
+
 router = APIRouter()
-
-
-class Applications(str, enum.Enum):
-    FLASK = "flask"
-    DJANGO = "django"
-    FASTAPI = "fastapi"
-    STARLETTE = "starlette"
-    LITESTAR = "litestar"
-    BOTTLE = "bottle"
-    GRADIO = "gradio"
-    PYWEBIO = "pywebio"
 
 
 @router.get("/")
