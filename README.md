@@ -18,7 +18,9 @@ The goal of this project is to provide examples to integrate / use as sub applic
 | Falcon      |❌     |🔳          |🔳       |🔳    |🔳             |
 | HUG         |❌     |🔳          |🔳       |🔳    |🔳             |
 | Tornado     |❌     |🔳          |🔳       |🔳    |🔳             |
-| aiohttp     |❌     |🔳          |🔳       |🔳    |🔳             |
+| Pyramid     |🔳     |🔳          |🔳       |🔳    |🔳             |
+| webapp2     |🔳     |🔳          |🔳       |🔳    |🔳             |
+| aiohttp     |⚠️     |🔳          |🔳       |🔳    |🔳             |
 | GradIO      |✅     |🔳          |🔳       |🔳    |🔳             |
 | PyWebIO     |✅     |🔳          |🔳       |🔳    |🔳             |
 | Flet        |✅     |🔳          |🔳       |🔳    |🔳             |
@@ -29,10 +31,11 @@ The goal of this project is to provide examples to integrate / use as sub applic
 
 Emoji key:
 
-- ✅: Done
-- 🔳: Not started
-- ❌: Tried but failed
+- ✅: Accomplished
+- 🔳: Not tried yet
+- ❌: Tried and failed
 - 🚧: In progress
+- ⚠️: Not sure if possible
 
 ## How to run
 
