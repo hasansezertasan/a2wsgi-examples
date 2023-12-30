@@ -4,30 +4,31 @@ The goal of this project is to provide examples to integrate / use as sub applic
 
 ## Progress
 
-| Framework   | Mount | Middleware  | Cookies | JWT   | Dependencies  |
-| :---        | :---: | :---:       | :---:   | :---: | :---:         |
-| Flask       |✅     |✅          |✅       |🔳    |🔳             |
-| FastAPI     |✅     |🔳          |✅       |🔳    |🔳             |
-| Django      |✅     |🔳          |🔳       |🔳    |🔳             |
-| Starlette   |✅     |🔳          |🔳       |🔳    |🔳             |
-| Bottle      |✅     |🔳          |🔳       |🔳    |🔳             |
-| Litestar    |✅     |🔳          |🔳       |🔳    |🔳             |
-| BlackSheep  |❌     |🔳          |🔳       |🔳    |🔳             |
-| Quart       |❌     |🔳          |🔳       |🔳    |🔳             |
-| Robyn       |❌     |🔳          |🔳       |🔳    |🔳             |
-| Falcon      |❌     |🔳          |🔳       |🔳    |🔳             |
-| HUG         |❌     |🔳          |🔳       |🔳    |🔳             |
-| Tornado     |❌     |🔳          |🔳       |🔳    |🔳             |
-| Pyramid     |🔳     |🔳          |🔳       |🔳    |🔳             |
-| webapp2     |🔳     |🔳          |🔳       |🔳    |🔳             |
-| aiohttp     |⚠️     |🔳          |🔳       |🔳    |🔳             |
-| GradIO      |✅     |🔳          |🔳       |🔳    |🔳             |
-| PyWebIO     |✅     |🔳          |🔳       |🔳    |🔳             |
-| Flet        |✅     |🔳          |🔳       |🔳    |🔳             |
-| NiceGUI     |🚧     |🔳          |🔳       |🔳    |🔳             |
-| Reflex      |🚧     |🔳          |🔳       |🔳    |🔳             |
-| Streamlit   |🔳     |🔳          |🔳       |🔳    |🔳             |
-| Plotly Dash |🔳     |🔳          |🔳       |🔳    |🔳             |
+| Framework   | Mount |  Support  |
+| :---------- | :---: | :-------: |
+| Flask       |   ✅   | ASGI/WSGI |
+| FastAPI     |   ✅   | ASGI/WSGI |
+| Django      |   ✅   | WSGI      |
+| Starlette   |   ✅   | ASGI/WSGI |
+| Bottle      |   ✅   | WSGI      |
+| Litestar    |   ✅   |           |
+| BlackSheep  |   ❌   |           |
+| Quart       |   ❌   |           |
+| Robyn       |   ❌   |           |
+| Falcon      |   ❌   |           |
+| HUG         |   ❌   |           |
+| Tornado     |   ❌   |           |
+| Sanic       |   🔳   |           |
+| Pyramid     |   🔳   |           |
+| webapp2     |   🔳   |           |
+| aiohttp     |   ⚠️   |           |
+| GradIO      |   ✅   |           |
+| PyWebIO     |   ✅   |           |
+| Flet        |   ✅   |           |
+| NiceGUI     |   🚧   |           |
+| Reflex      |   🚧   |           |
+| Streamlit   |   🔳   |           |
+| Plotly Dash |   🔳   |           |
 
 Emoji key:
 
@@ -36,6 +37,10 @@ Emoji key:
 - ❌: Tried and failed
 - 🚧: In progress
 - ⚠️: Not sure if possible
+
+## Why
+
+Migration process is not likable but in some cases, necessary. `a2wsgi` offers us to migrate our web applications with ease.
 
 ## How to run
 
