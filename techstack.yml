@@ -2,7 +2,7 @@ repo_name: hasansezertasan/fastapi-mount-examples
 report_id: fa21d23acab08b6d1d61cb1a009dd4bd
 version: 0.1
 repo_type: Public
-timestamp: '2023-12-21T15:09:28+00:00'
+timestamp: '2024-01-05T08:19:18+00:00'
 requested_by: hasansezertasan
 provider: github
 branch: main
@@ -17,6 +17,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/993/pUBY5pVj.png
+  detection_source_url: https://github.com/hasansezertasan/fastapi-mount-examples
   detection_source: Repo Metadata
 - name: Docker
   description: Enterprise Container Platform for High-Velocity Innovation.
@@ -27,6 +28,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Virtual Machine Platforms & Containers
   image_url: https://img.stackshare.io/service/586/n4u37v9t_400x400.png
+  detection_source_url: https://github.com/hasansezertasan/fastapi-mount-examples
   detection_source: Repo Metadata
 - name: Git
   description: Fast, scalable, distributed revision control system
@@ -36,6 +38,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Version Control System
   image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/hasansezertasan/fastapi-mount-examples
   detection_source: Repo Metadata
 - name: PyPI
   description: A repository of software for the Python programming language
@@ -45,6 +48,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Hosted Package Repository
   image_url: https://img.stackshare.io/service/12572/-RIWgodF_400x400.jpg
+  detection_source_url: https://github.com/hasansezertasan/fastapi-mount-examples/blob/main/pyproject.toml
   detection_source: pyproject.toml
   last_updated_by: hasansezertasan
   last_updated_on: 2023-08-20 07:23:12.000000000 Z
@@ -56,6 +60,7 @@ tools:
   category: Assets and Media
   sub_category: File Transfer
   image_url: https://img.stackshare.io/service/6552/curl-logo.png
+  detection_source_url: https://github.com/hasansezertasan/fastapi-mount-examples/blob/main/docker-compose.yml
   detection_source: docker-compose.yml
   last_updated_by: hasansezertasan
   last_updated_on: 2023-08-20 07:23:12.000000000 Z
@@ -67,6 +72,7 @@ tools:
   category: Communications
   sub_category: Large Language Model Tools
   image_url: https://img.stackshare.io/service/48790/default_5b6c6b73f1ff3775c85d2a1ba954cb87e30cbf13.jpg
+  detection_source_url: https://github.com/hasansezertasan/fastapi-mount-examples/blob/main/pyproject.toml
   detection_source: pyproject.toml
   last_updated_by: hasansezertasan
   last_updated_on: 2023-08-20 07:23:12.000000000 Z
