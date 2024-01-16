@@ -6,6 +6,35 @@ authors = ["hasansezertasan <hasansezertasan@gmail.com>"]
 readme = "README.md"
 maintainers = ["hasansezertasan <hasansezertasan@gmail.com>"]
 
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.12"
+uvicorn = "^0.22.0"
+a2wsgi = "^1.7.0"
+FastAPI = "^0.101.0"
+Flask = "^3.0.0"
+Starlette = "^0.27.0"
+Django = "^4.2.6"
+bottle = "^0.12.25"
+litestar = "^2.1.1"
+gradio = "^3.47.1"
+pywebio = "^1.8.2"
+nicegui = "^1.3.16"
+flet-fastapi = "^0.10.3"
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.25.2"
+isort = "^5.12.0"
+black = { extras = ["jupyter"], version = "^23.9.1" }
+ruff = "^0.0.292"
+pre-commit = "^3.4.0"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4.0"
+
+
 [tool.ruff]
 # Run `ruff linter` command to see all available linters and their descriptions
 target-version = "py311"
@@ -30,6 +59,7 @@ ignore = [
 ]
 exclude = ["alembic", "migrations"]
 show-fixes = true
+
 
 [tool.isort]
 profile = "black"
@@ -76,29 +106,3 @@ test = "pytest -v -s"
 run = "uvicorn --port 5000 --reload main:app"
 clean = "frenchmaid clean"
 requirements = "poetry export -f requirements.txt --output pyproject.txt --without-hashes"
-
-[tool.poetry.dependencies]
-python = ">=3.11,<3.12"
-uvicorn = "^0.22.0"
-a2wsgi = "^1.7.0"
-FastAPI = "^0.101.0"
-Flask = "^3.0.0"
-Starlette = "^0.27.0"
-Django = "^4.2.6"
-bottle = "^0.12.25"
-litestar = "^2.1.1"
-gradio = "^3.47.1"
-pywebio = "^1.8.2"
-nicegui = "^1.3.16"
-flet-fastapi = "^0.10.3"
-
-
-[tool.poetry.group.dev.dependencies]
-ipykernel = "^6.25.2"
-isort = "^5.12.0"
-black = { extras = ["jupyter"], version = "^23.9.1" }
-ruff = "^0.0.292"
-pre-commit = "^3.4.0"
-
-[tool.poetry.group.test.dependencies]
-pytest = "^7.4.0"
