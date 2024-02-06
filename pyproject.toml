@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "FastAPI Mount Examples"
+name = "a2wsgi-examples"
 version = "0.1.0"
 description = ""
 authors = ["hasansezertasan <hasansezertasan@gmail.com>"]
