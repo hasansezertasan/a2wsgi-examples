@@ -26,7 +26,7 @@ You have two options:
 | Django     | :white_check_mark:    | WSGI      |
 | Starlette  | :white_check_mark:    | ASGI/WSGI |
 | Bottle     | :white_check_mark:    | WSGI      |
-| Litestar   | :white_check_mark:    |           |
+| Litestar   | :white_check_mark:    | ASGI/WSGI |
 | BlackSheep | :x:                   |           |
 | Quart      | :x:                   |           |
 | Robyn      | :x:                   |           |
