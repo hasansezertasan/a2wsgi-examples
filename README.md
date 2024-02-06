@@ -1,17 +1,17 @@
 # a2wsgi Examples
 
-The goal of this project is to provide examples about integrating different Python Web Frameworks and how they can be used together with `a2wsgi`.
+The goal of this project is to provide examples about integrating different Python Web Frameworks and how they can be used together with [a2wsgi][a2wsgi].
 
 ## Why
 
-Who likes migration? But in some cases, it's necessary. `a2wsgi` helps us to convert our ASGI applications to WSGI or vice versa.
+Who likes migration? But in some cases, it's necessary. [a2wsgi] helps us to convert our ASGI applications to WSGI or vice versa.
 
 A Scenerio: You have a Flask application and you want to migrate it to FastAPI.
 
 You have two options:
 
 1. Rewrite the whole application from scratch and deploy it when it's ready.
-2. Use `a2wsgi` to convert your Flask application to WSGI using `a2wsgi` and then integrate (mount) it to your FastAPI application and deploy it. By the time, you can rewrite your application step by step.
+2. Use [a2wsgi] to convert your Flask application to WSGI using [a2wsgi] and then integrate (mount) it to your FastAPI application and deploy it. By the time, you can rewrite your application step by step.
 
 > This was the scenerio that I faced.
 
@@ -83,3 +83,6 @@ If you would like to contribute to this project, please open an issue or submit 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+<!-- Links -->
+[a2wsgi]: https://github.com/abersheeran/a2wsgi
