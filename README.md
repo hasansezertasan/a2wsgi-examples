@@ -19,24 +19,24 @@ You have two options:
 
 ### Frameworks
 
-| Framework  | Mount                 | Protocol  |
-| ---------- | --------------------- | --------- |
-| Flask      | :white_check_mark:    | ASGI/WSGI |
-| FastAPI    | :white_check_mark:    | ASGI/WSGI |
-| Django     | :white_check_mark:    | WSGI      |
-| Starlette  | :white_check_mark:    | ASGI/WSGI |
-| Bottle     | :white_check_mark:    | WSGI      |
-| Litestar   | :white_check_mark:    | ASGI/WSGI |
-| BlackSheep | :x:                   |           |
-| Quart      | :x:                   |           |
-| Robyn      | :x:                   |           |
-| Falcon     | :x:                   |           |
-| HUG        | :x:                   |           |
-| Tornado    | :x:                   |           |
-| Sanic      | :white_square_button: |           |
-| Pyramid    | :white_square_button: |           |
-| webapp2    | :white_square_button: |           |
-| aiohttp    | :warning:             |           |
+| Framework  | Mount                 | Protocol  | Documentation                                                                                                             |
+| ---------- | --------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Flask      | :white_check_mark:    | ASGI/WSGI | [Application Dispatching — Flask Documentation (3.0.x)](https://flask.palletsprojects.com/en/3.0.x/patterns/appdispatch/) |
+| FastAPI    | :white_check_mark:    | ASGI/WSGI | [Sub Applications - Mounts - FastAPI](https://fastapi.tiangolo.com/advanced/sub-applications/)                            |
+| Django     | :white_check_mark:    | WSGI      |                                                                                                                           |
+| Starlette  | :white_check_mark:    | ASGI/WSGI |                                                                                                                           |
+| Bottle     | :white_check_mark:    | WSGI      |                                                                                                                           |
+| Litestar   | :white_check_mark:    | ASGI/WSGI |                                                                                                                           |
+| BlackSheep | :x:                   |           |                                                                                                                           |
+| Quart      | :x:                   |           |                                                                                                                           |
+| Robyn      | :x:                   |           |                                                                                                                           |
+| Falcon     | :x:                   |           |                                                                                                                           |
+| HUG        | :x:                   |           |                                                                                                                           |
+| Tornado    | :x:                   |           |                                                                                                                           |
+| Sanic      | :white_square_button: |           |                                                                                                                           |
+| Pyramid    | :white_square_button: |           |                                                                                                                           |
+| webapp2    | :white_square_button: |           |                                                                                                                           |
+| aiohttp    | :warning:             |           |                                                                                                                           |
 
 ### Other tools
 
