@@ -1,0 +1,135 @@
+repo_name: hasansezertasan/fastapi-mount-examples
+report_id: fa21d23acab08b6d1d61cb1a009dd4bd
+version: 0.1
+repo_type: Public
+timestamp: '2024-01-05T08:19:18+00:00'
+requested_by: hasansezertasan
+provider: github
+branch: main
+detected_tools_count: 10
+tools:
+- name: Python
+  description: A clear and powerful object-oriented programming language, comparable
+    to Perl, Ruby, Scheme, or Java.
+  website_url: https://www.python.org
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/993/pUBY5pVj.png
+  detection_source_url: https://github.com/hasansezertasan/fastapi-mount-examples
+  detection_source: Repo Metadata
+- name: Docker
+  description: Enterprise Container Platform for High-Velocity Innovation.
+  website_url: https://www.docker.com/
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Virtual Machine Platforms & Containers
+  image_url: https://img.stackshare.io/service/586/n4u37v9t_400x400.png
+  detection_source_url: https://github.com/hasansezertasan/fastapi-mount-examples
+  detection_source: Repo Metadata
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/hasansezertasan/fastapi-mount-examples
+  detection_source: Repo Metadata
+- name: PyPI
+  description: A repository of software for the Python programming language
+  website_url: https://pypi.org/
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Hosted Package Repository
+  image_url: https://img.stackshare.io/service/12572/-RIWgodF_400x400.jpg
+  detection_source_url: https://github.com/hasansezertasan/fastapi-mount-examples/blob/main/pyproject.toml
+  detection_source: pyproject.toml
+  last_updated_by: hasansezertasan
+  last_updated_on: 2023-08-20 07:23:12.000000000 Z
+- name: cURL
+  description: Command Line Tool and Library for Transferring Data With URLs
+  website_url: http://curl.haxx.se/
+  open_source: true
+  hosted_saas: false
+  category: Assets and Media
+  sub_category: File Transfer
+  image_url: https://img.stackshare.io/service/6552/curl-logo.png
+  detection_source_url: https://github.com/hasansezertasan/fastapi-mount-examples/blob/main/docker-compose.yml
+  detection_source: docker-compose.yml
+  last_updated_by: hasansezertasan
+  last_updated_on: 2023-08-20 07:23:12.000000000 Z
+- name: LangChain
+  description: Build AI apps with LLMs through composability
+  website_url: https://github.com/hwchase17/langchain
+  open_source: true
+  hosted_saas: false
+  category: Communications
+  sub_category: Large Language Model Tools
+  image_url: https://img.stackshare.io/service/48790/default_5b6c6b73f1ff3775c85d2a1ba954cb87e30cbf13.jpg
+  detection_source_url: https://github.com/hasansezertasan/fastapi-mount-examples/blob/main/pyproject.toml
+  detection_source: pyproject.toml
+  last_updated_by: hasansezertasan
+  last_updated_on: 2023-08-20 07:23:12.000000000 Z
+- name: Django
+  description: A high-level Python Web framework that encourages rapid development
+    and clean
+  package_url: https://pypi.org/project/Django
+  version: 4.2.6
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19832/default_58dbe7b4d7ec447b62773209af0f9a31bbabf5bd.png
+  detection_source_url: https://github.com/hasansezertasan/fastapi-mount-examples/blob/main/pyproject.toml
+  detection_source: pyproject.toml
+  last_updated_by: hasansezertasan
+  last_updated_on: 2023-10-09 14:28:59.000000000 Z
+- name: Flask
+  description: A simple framework for building complex web applications
+  package_url: https://pypi.org/project/Flask
+  version: 3.0.0
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19834/default_58dbe7b4d7ec447b62773209af0f9a31bbabf5bd.png
+  detection_source_url: https://github.com/hasansezertasan/fastapi-mount-examples/blob/main/pyproject.toml
+  detection_source: pyproject.toml
+  last_updated_by: hasansezertasan
+  last_updated_on: 2023-10-09 14:28:59.000000000 Z
+- name: bottle
+  description: Fast and simple WSGI-framework for small web-applications
+  package_url: https://pypi.org/project/bottle
+  version: 0.12.25
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19975/default_7bdb5665dee17d53e3a12b8e2b533bcdb6f55a47.png
+  detection_source_url: https://github.com/hasansezertasan/fastapi-mount-examples/blob/main/pyproject.toml
+  detection_source: pyproject.toml
+  last_updated_by: hasansezertasan
+  last_updated_on: 2023-09-07 21:03:19.000000000 Z
+- name: uvicorn
+  description: The lightning-fast ASGI server
+  package_url: https://pypi.org/project/uvicorn
+  version: 0.22.0
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20431/default_f824837db22536768ec317b67275fa384fad7d47.png
+  detection_source_url: https://github.com/hasansezertasan/fastapi-mount-examples/blob/main/pyproject.toml
+  detection_source: pyproject.toml
+  last_updated_by: hasansezertasan
+  last_updated_on: 2023-10-09 14:28:59.000000000 Z
