@@ -19,20 +19,25 @@ A Scenerio (that I have faced): You have a Flask application and you want to mig
 | ---------- | --------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------- |
 | Flask      | :white_check_mark:    | ASGI/WSGI | [Application Dispatching — Flask Documentation (3.0.x)](https://flask.palletsprojects.com/en/3.0.x/patterns/appdispatch/) |
 | FastAPI    | :white_check_mark:    | ASGI/WSGI | [Sub Applications - Mounts - FastAPI](https://fastapi.tiangolo.com/advanced/sub-applications/)                            |
-| Django     | :white_check_mark:    | WSGI      |                                                                                                                           |
+| Django     | :white_check_mark:    | ASGI/WSGI |                                                                                                                           |
 | Starlette  | :white_check_mark:    | ASGI/WSGI |                                                                                                                           |
-| Bottle     | :white_check_mark:    | WSGI      |                                                                                                                           |
 | Litestar   | :white_check_mark:    | ASGI/WSGI |                                                                                                                           |
-| BlackSheep | :x:                   |           |                                                                                                                           |
-| Quart      | :x:                   |           |                                                                                                                           |
+| BlackSheep | :x:                   | ASGI      |                                                                                                                           |
+| Quart      | :x:                   | ASGI      |                                                                                                                           |
+| Falcon     | :x:                   | ASGI/WSGI |                                                                                                                           |
+| Sanic      | :white_square_button: | ASGI      |                                                                                                                           |
+| Connexion  | :white_square_button: | ASGI      |                                                                                                                           |
+| Bottle     | :white_check_mark:    | WSGI      |                                                                                                                           |
 | Robyn      | :x:                   |           |                                                                                                                           |
-| Falcon     | :x:                   |           |                                                                                                                           |
 | HUG        | :x:                   |           |                                                                                                                           |
 | Tornado    | :x:                   |           |                                                                                                                           |
-| Sanic      | :white_square_button: |           |                                                                                                                           |
-| Pyramid    | :white_square_button: |           |                                                                                                                           |
+| Pyramid    | :white_square_button: | WSGI      |                                                                                                                           |
 | webapp2    | :white_square_button: |           |                                                                                                                           |
 | aiohttp    | :warning:             |           |                                                                                                                           |
+
+More WSGI: [Frameworks that run on WSGI — WSGI.org](https://wsgi.readthedocs.io/en/latest/frameworks.html)
+
+More ASGI: [Implementations — ASGI 3.0 documentation](https://asgi.readthedocs.io/en/latest/implementations.html)
 
 ### Other tools
 
