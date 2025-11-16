@@ -1,7 +1,7 @@
 repos:
   # https://github.com/pre-commit/pre-commit-hooks#pre-commit-hooks
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v5.0.0
     hooks:
       - id: check-yaml
       - id: end-of-file-fixer
@@ -9,7 +9,7 @@ repos:
       - id: check-added-large-files
   # https://pycqa.github.io/isort/docs/configuration/pre-commit.html
   - repo: https://github.com/pycqa/isort
-    rev: 5.12.0
+    rev: 6.0.1
     hooks:
       - id: isort
         name: isort (python)
@@ -17,7 +17,7 @@ repos:
         exclude: ^(\.git|\.hg|\.mypy_cache|\.nox|\.tox|\.venv|_build|buck-out|build|dist|alembic)/
         args: [--settings-path=pyproject.toml]
   - repo: https://github.com/psf/black
-    rev: 23.7.0
+    rev: 25.1.0
     hooks:
       - id: black
         language_version: python3.11
@@ -25,7 +25,7 @@ repos:
         args: [--config=pyproject.toml]
   # Check compliance with flake8.
   - repo: https://github.com/PyCQA/flake8
-    rev: 6.1.0
+    rev: 7.3.0
     hooks:
       - id: flake8
         name: flake8 (python)
