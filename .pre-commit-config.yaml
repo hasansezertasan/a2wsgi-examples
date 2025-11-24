@@ -1,3 +1,30 @@
+---
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+exclude: |
+  (?x)^(
+    # Ignore `.devcontainer/devcontainer.json`
+    |\.devcontainer/devcontainer\.json$
+
+    # Ignore `.vscode/launch.json`
+    |\.vscode/launch\.json$
+
+    # Ignore VCS and Python build/virtualenv directories
+    |\.eggs
+    |\.git
+    |\.hg
+    |\.mypy_cache
+    |\.nox
+    |\.tox
+    |\.venv
+    |_build
+    |buck-out
+    |build
+    |dist
+    |alembic
+  )$
+default_language_version:
+  python: python3.10
 repos:
   # https://github.com/pre-commit/pre-commit-hooks#pre-commit-hooks
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -14,20 +41,16 @@ repos:
       - id: isort
         name: isort (python)
         files: "\\.(py)$"
-        exclude: ^(\.git|\.hg|\.mypy_cache|\.nox|\.tox|\.venv|_build|buck-out|build|dist|alembic)/
         args: [--settings-path=pyproject.toml]
   - repo: https://github.com/psf/black
     rev: 23.7.0
     hooks:
       - id: black
-        language_version: python3.11
-        exclude: ^(\.git|\.hg|\.mypy_cache|\.nox|\.tox|\.venv|_build|buck-out|build|dist|alembic)/
+        language_version: python3.10
         args: [--config=pyproject.toml]
-  # Check compliance with flake8.
   - repo: https://github.com/PyCQA/flake8
     rev: 6.1.0
     hooks:
       - id: flake8
         name: flake8 (python)
-        args : [--config=setup.cfg]
-        exclude: ^(\.git|\.hg|\.mypy_cache|\.nox|\.tox|\.venv|_build|buck-out|build|dist|alembic)/
+        args: [--config=setup.cfg]

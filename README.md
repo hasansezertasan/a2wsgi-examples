@@ -70,7 +70,7 @@ Emoji key:
 
 1. Clone the repository
 2. Run `docker-compose up --build`
-3. Go to `http://localhost:8000/docs` to see the API documentation
+3. Go to `http://localhost:80/docs` to see the API documentation
 4. Enjoy!
 
 ## Contributing
