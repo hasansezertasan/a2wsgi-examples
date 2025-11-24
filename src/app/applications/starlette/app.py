@@ -22,6 +22,6 @@ async def homepage(request: Request) -> JSONResponse:
 app = Starlette(
     debug=True,
     routes=[
-        Route("/", homepage),
+        Route(path="/", endpoint=homepage),
     ],
 )

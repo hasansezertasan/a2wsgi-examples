@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.core.wsgi import get_wsgi_application
-from django.http import JsonResponse
+from django.http.response import JsonResponse
 from django.urls import path
 
 settings.configure(
@@ -9,7 +9,14 @@ settings.configure(
 )
 
 
-def index(request):
+def index(request) -> JsonResponse:
+    """Handle django request.
+
+    Args:
+        request: The incoming request.
+    Returns:
+        JsonResponse: The response to be sent back.
+    """
     return JsonResponse(
         data={
             "message": "Hello django",
@@ -18,7 +25,7 @@ def index(request):
 
 
 urlpatterns = [
-    path("", index),
+    path(route="", view=index),
 ]
 
 application = get_wsgi_application()

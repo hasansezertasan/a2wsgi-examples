@@ -6,7 +6,7 @@ The purpose of this project is to provide examples of how we can use (integrate)
 
 Who likes migration? But in some cases, it's necessary. [a2wsgi] helps us to convert our ASGI applications to WSGI or vice versa.
 
-A Scenerio (that I have faced): You have a Flask application and you want to migrate it to FastAPI. You have two options:
+A Scenario (that I have faced): You have a Flask application and you want to migrate it to FastAPI. You have two options:
 
 1. Rewrite the whole application from scratch and deploy it when it's ready.
 2. Use [a2wsgi] to convert your Flask application to WSGI using [a2wsgi] and then integrate (mount) it to your FastAPI application and deploy it. By the time, you can rewrite your application step by step.

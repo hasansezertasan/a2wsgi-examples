@@ -18,7 +18,7 @@ def after_request(response):
 
 
 @app.get(rule="/")
-def index():
+def index() -> Response:
     return jsonify(
         {
             "message": "Hello Flask",

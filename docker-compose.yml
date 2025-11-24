@@ -3,9 +3,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    restart: always
-    container_name: server
     command: uvicorn app.main:app --host 0.0.0.0 --port 80
+    container_name: server
     healthcheck:
       test: ["CMD", "curl", "-f", "http://172.17.0.1:80"]
       interval: 1m
@@ -13,5 +12,6 @@ services:
       retries: 3
     ports:
       - 80:80
+    restart: always
     volumes:
       - .:/app
