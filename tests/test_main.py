@@ -87,6 +87,41 @@ def test_pyramid() -> None:
     assert response.json() == {"message": "Hello pyramid"}
 
 
+def test_hug() -> None:
+    """Test the hug endpoint."""
+    response = client.get("/hug")
+    assert response.status_code == status.HTTP_200_OK, response.text
+    assert response.json() == {"message": "Hello hug"}
+
+
+def test_robyn() -> None:
+    """Test the robyn endpoint."""
+    response = client.get("/robyn")
+    assert response.status_code == status.HTTP_200_OK, response.text
+    assert response.json() == {"message": "Hello robyn"}
+
+
+def test_webapp2() -> None:
+    """Test the webapp2 endpoint."""
+    response = client.get("/webapp2")
+    assert response.status_code == status.HTTP_200_OK, response.text
+    assert response.json() == {"message": "Hello webapp2"}
+
+
+def test_connexion() -> None:
+    """Test the connexion endpoint."""
+    response = client.get("/connexion")
+    assert response.status_code == status.HTTP_200_OK, response.text
+    assert response.json() == {"message": "Hello connexion"}
+
+
+def test_tornado() -> None:
+    """Test the tornado endpoint."""
+    response = client.get("/tornado")
+    assert response.status_code == status.HTTP_200_OK, response.text
+    assert response.json() == {"message": "Hello tornado"}
+
+
 def test_aiohttp() -> None:
     """Test the aiohttp endpoint."""
     response = client.get("/aiohttp")

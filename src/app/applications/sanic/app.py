@@ -1,17 +1,17 @@
 # TODO @hasansezertasan: This implementation is a temporary workaround, please replace it.
-from aiohttp import web
+"""Minimal Sanic-powered ASGI response."""
+
+from sanic.response import json as sanic_json
+
 
 async def app(scope, receive, send):  # type: ignore[override]
-    """ASGI shim that responds using aiohttp's response helpers."""
+    """Return a Sanic-style JSON response via ASGI."""
     if scope["type"] != "http":
-        raise RuntimeError("aiohttp demo only supports HTTP.")
+        raise RuntimeError("Sanic demo only supports HTTP.")
 
-    # Build the response with aiohttp's json_response for consistency.
-    response = web.json_response({"message": "Hello aiohttp"})
-
+    response = sanic_json({"message": "Hello sanic"})
     headers = [
-        (name.encode("latin-1"), value.encode("latin-1"))
-        for name, value in response.headers.items()
+        (b"content-type", response.content_type.encode("latin-1")),
     ]
     await send(
         {
