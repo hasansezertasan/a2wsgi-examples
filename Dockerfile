@@ -1,4 +1,4 @@
-FROM python:3.11.0
+FROM python:3.14.1
 WORKDIR /app
 EXPOSE 80
 COPY ./requirements.txt .
