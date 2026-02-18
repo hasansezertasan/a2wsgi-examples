@@ -9,7 +9,7 @@ maintainers = ["hasansezertasan <hasansezertasan@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = ">=3.11,<3.12"
-uvicorn = "^0.22.0"
+uvicorn = "^0.41.0"
 a2wsgi = "^1.7.0"
 FastAPI = "^0.101.0"
 Flask = "^3.0.0"
