@@ -20,7 +20,7 @@ litestar = "^2.1.1"
 gradio = "^6.0.0"
 pywebio = "^1.8.2"
 nicegui = "^3.0.0"
-flet-fastapi = "^0.10.3"
+flet-fastapi = "^0.20.0"
 
 
 [tool.poetry.group.dev.dependencies]
