@@ -28,7 +28,7 @@ ipykernel = "^6.25.2"
 isort = "^8.0.0"
 black = { extras = ["jupyter"], version = "^26.0.0" }
 ruff = "^0.15.0"
-pre-commit = "^3.4.0"
+pre-commit = "^4.0.0"
 
 
 [tool.poetry.group.test.dependencies]
