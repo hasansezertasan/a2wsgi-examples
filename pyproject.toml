@@ -24,7 +24,7 @@ flet-fastapi = "^0.10.3"
 
 
 [tool.poetry.group.dev.dependencies]
-ipykernel = "^6.25.2"
+ipykernel = "^7.0.0"
 isort = "^8.0.0"
 black = { extras = ["jupyter"], version = "^26.0.0" }
 ruff = "^0.15.0"
