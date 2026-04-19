@@ -6,7 +6,7 @@ The purpose of this project is to provide examples of how we can use (integrate)
 
 Who likes migration? But in some cases, it's necessary. [a2wsgi] helps us to convert our ASGI applications to WSGI or vice versa.
 
-A Scenerio (that I have faced): You have a Flask application and you want to migrate it to FastAPI. You have two options:
+A Scenario (that I have faced): You have a Flask application and you want to migrate it to FastAPI. You have two options:
 
 1. Rewrite the whole application from scratch and deploy it when it's ready.
 2. Use [a2wsgi] to convert your Flask application to WSGI using [a2wsgi] and then integrate (mount) it to your FastAPI application and deploy it. By the time, you can rewrite your application step by step.
@@ -15,35 +15,31 @@ A Scenerio (that I have faced): You have a Flask application and you want to mig
 
 ### Frameworks
 
-| Framework  | Mount                 | Protocol  | Documentation                                                                                                             |
-| ---------- | --------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Flask      | :white_check_mark:    | ASGI/WSGI | [Application Dispatching — Flask Documentation (3.0.x)](https://flask.palletsprojects.com/en/3.0.x/patterns/appdispatch/) |
-| FastAPI    | :white_check_mark:    | ASGI/WSGI | [Sub Applications - Mounts - FastAPI](https://fastapi.tiangolo.com/advanced/sub-applications/)                            |
-| Django     | :white_check_mark:    | ASGI/WSGI |                                                                                                                           |
-| Starlette  | :white_check_mark:    | ASGI/WSGI |                                                                                                                           |
-| Litestar   | :white_check_mark:    | ASGI/WSGI |                                                                                                                           |
-| BlackSheep | :x:                   | ASGI      |                                                                                                                           |
-| Quart      | :x:                   | ASGI      |                                                                                                                           |
-| Falcon     | :x:                   | ASGI/WSGI |                                                                                                                           |
-| Sanic      | :white_square_button: | ASGI      |                                                                                                                           |
-| Connexion  | :white_square_button: | ASGI      |                                                                                                                           |
-| Bottle     | :white_check_mark:    | WSGI      |                                                                                                                           |
-| Robyn      | :x:                   |           |                                                                                                                           |
-| HUG        | :x:                   |           |                                                                                                                           |
-| Tornado    | :x:                   |           |                                                                                                                           |
-| Pyramid    | :white_square_button: | WSGI      |                                                                                                                           |
-| webapp2    | :white_square_button: |           |                                                                                                                           |
-| aiohttp    | :warning:             |           |                                                                                                                           |
-
-More WSGI: [Frameworks that run on WSGI — WSGI.org](https://wsgi.readthedocs.io/en/latest/frameworks.html)
-
-More ASGI: [Implementations — ASGI 3.0 documentation](https://asgi.readthedocs.io/en/latest/implementations.html)
+| Framework  | Mount              | Protocol | Notes                                                 |
+| ---------- | ------------------ | -------- | ----------------------------------------------------- |
+| Flask      | :white_check_mark: | WSGI     | Full app with cookie endpoints                        |
+| FastAPI    | :white_check_mark: | ASGI     | Full app with cookie endpoints                        |
+| Django     | :white_check_mark: | WSGI     |                                                       |
+| Starlette  | :white_check_mark: | ASGI     |                                                       |
+| Litestar   | :white_check_mark: | ASGI     |                                                       |
+| BlackSheep | :white_check_mark: | ASGI     | ASGI shim — requires own lifecycle for full app mount |
+| Quart      | :white_check_mark: | ASGI     |                                                       |
+| Falcon     | :white_check_mark: | WSGI     |                                                       |
+| Sanic      | :white_check_mark: | ASGI     | ASGI shim — manages own event loop                    |
+| Connexion  | :white_check_mark: | ASGI     | Fallback shim when not installed                      |
+| Bottle     | :white_check_mark: | WSGI     |                                                       |
+| Robyn      | :white_check_mark: | WSGI     | WSGI shim — no WSGI/ASGI adapter available            |
+| HUG        | :white_check_mark: | WSGI     |                                                       |
+| Tornado    | :white_check_mark: | WSGI     | WSGI shim — runs own IOLoop, no adapter               |
+| Pyramid    | :white_check_mark: | WSGI     |                                                       |
+| webapp2    | :white_check_mark: | WSGI     | Fallback shim when not installed                      |
+| aiohttp    | :white_check_mark: | ASGI     | ASGI shim — no native ASGI sub-app mounting           |
 
 ### Other tools
 
 | Framework   | Mount                 |
 | ----------- | --------------------- |
-| GradIO      | :white_check_mark:    |
+| Gradio      | :white_check_mark:    |
 | PyWebIO     | :white_check_mark:    |
 | Flet        | :white_check_mark:    |
 | NiceGUI     | :construction:        |
@@ -63,19 +59,41 @@ Emoji key:
 
 ### Requirements
 
-- Docker
-- Docker Compose
+- Python 3.10+
+- [uv](https://docs.astral.sh/uv/)
+- Docker & Docker Compose (optional)
 
-### Steps
+### Local development
 
-1. Clone the repository
-2. Run `docker-compose up --build`
-3. Go to `http://localhost:8000/docs` to see the API documentation
-4. Enjoy!
+```bash
+uv sync
+uv run uvicorn app.main:app --reload
+```
+
+### Docker
+
+```bash
+docker compose up --build
+```
+
+Go to `http://localhost:8000/docs` to see the API documentation.
+
+### Running tests
+
+```bash
+uv run pytest tests/ -v
+```
 
 ## Contributing
 
 If you would like to contribute to this project, please open an issue or submit a pull request.
+
+### Further Reading
+
+- [Frameworks that run on WSGI — WSGI.org](https://wsgi.readthedocs.io/en/latest/frameworks.html)
+- [Implementations — ASGI 3.0 documentation](https://asgi.readthedocs.io/en/latest/implementations.html)
+- [Application Dispatching — Flask Documentation (3.0.x)](https://flask.palletsprojects.com/en/3.0.x/patterns/appdispatch/)
+- [Sub Applications - Mounts - FastAPI](https://fastapi.tiangolo.com/advanced/sub-applications/)
 
 ## Author
 
@@ -86,4 +104,5 @@ If you would like to contribute to this project, please open an issue or submit 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 <!-- Links -->
+
 [a2wsgi]: https://github.com/abersheeran/a2wsgi

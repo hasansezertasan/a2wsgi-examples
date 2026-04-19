@@ -1,0 +1,1 @@
+"""Implementation of fastapi application."""
