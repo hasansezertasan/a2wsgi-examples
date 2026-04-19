@@ -1,11 +1,15 @@
-# TODO @hasansezertasan: This implementation is a temporary workaround, please replace it.
-"""Minimal Sanic-powered ASGI response."""
+"""Sanic sub-application mounted via ASGI.
+
+Sanic manages its own event loop and cannot be mounted as a sub-app inside
+another ASGI server. This provides a minimal ASGI shim that uses Sanic's
+response helpers for consistent serialization.
+"""
 
 from sanic.response import json as sanic_json
 
 
 async def app(scope, receive, send):  # type: ignore[override]
-    """Return a Sanic-style JSON response via ASGI."""
+    """ASGI shim — Sanic cannot be mounted as a sub-app."""
     if scope["type"] != "http":
         raise RuntimeError("Sanic demo only supports HTTP.")
 

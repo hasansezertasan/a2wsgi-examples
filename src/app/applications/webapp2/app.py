@@ -1,4 +1,5 @@
-# TODO @hasansezertasan: This implementation is a temporary workaround, please replace it.
+"""webapp2 sub-application mounted via WSGIMiddleware."""
+
 import json
 
 try:

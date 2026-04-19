@@ -1,12 +1,17 @@
-# TODO @hasansezertasan: This implementation is a temporary workaround, please replace it.
+"""aiohttp sub-application mounted via ASGI.
+
+aiohttp does not natively support ASGI mounting. This provides a minimal
+ASGI app that uses aiohttp's json_response for consistent serialization.
+"""
+
 from aiohttp import web
 
+
 async def app(scope, receive, send):  # type: ignore[override]
-    """ASGI shim that responds using aiohttp's response helpers."""
+    """ASGI shim — aiohttp has no native ASGI adapter for sub-app mounting."""
     if scope["type"] != "http":
         raise RuntimeError("aiohttp demo only supports HTTP.")
 
-    # Build the response with aiohttp's json_response for consistency.
     response = web.json_response({"message": "Hello aiohttp"})
 
     headers = [

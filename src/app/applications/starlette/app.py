@@ -4,23 +4,17 @@ from starlette.responses import JSONResponse
 from starlette.routing import Route
 
 
-async def homepage(request: Request) -> JSONResponse:
-    """Homepage view for Starlette application.
-
-    Args:
-        request (Request): The incoming HTTP request.
-    Returns:
-        JSONResponse: A JSON response with a greeting message.
-    """
+async def homepage(request: Request) -> JSONResponse:  # noqa: ARG001
+    """Handle Starlette request."""
     return JSONResponse(
         {
-            "message": "Hello Starlette",
+            "message": "Hello starlette",
         },
     )
 
 
 app = Starlette(
-    debug=True,
+    debug=False,
     routes=[
         Route(path="/", endpoint=homepage),
     ],

@@ -6,7 +6,7 @@ app = FastAPI()
 @app.get(path="/")
 async def index() -> dict[str, str]:
     return {
-        "message": "Hello FastAPI",
+        "message": "Hello fastapi",
     }
 
 

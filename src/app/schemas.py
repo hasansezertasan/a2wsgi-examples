@@ -25,3 +25,5 @@ class Applications(str, enum.Enum):
     ROBYN = "robyn"
     WEBAPP2 = "webapp2"
     FLET = "flet"
+    CONNEXION = "connexion"
+    NICEGUI = "nicegui"

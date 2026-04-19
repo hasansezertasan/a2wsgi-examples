@@ -41,7 +41,6 @@ if connexion is not None:
         spec,
         validate_responses=False,
         strict_validation=False,
-        resolver_error=Exception,
     )
     # Expose the ASGI-compatible Connexion app.
     app = connexion_app  # type: ignore[assignment]

@@ -54,12 +54,12 @@ repos:
       - id: sync-with-uv
         name: Sync with uv
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 0.9.11
+    rev: 0.11.7
     hooks:
       - id: uv-lock
         name: Update the uv lockfile
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.14.6
+    rev: v0.15.11
     hooks:
       - id: ruff
         name: Ruff Linter

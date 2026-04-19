@@ -8,7 +8,7 @@ async def index() -> dict[str, str]:
     Returns:
         dict[str, str]: The response to be sent back.
     """
-    return {"message": "Hello, Litestar!"}
+    return {"message": "Hello litestar"}
 
 
 app: Litestar = Litestar(route_handlers=[index])

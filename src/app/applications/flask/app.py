@@ -1,19 +1,11 @@
-from flask import Flask, jsonify, make_response, request, session
+from flask import Flask, jsonify, make_response, request
 from flask.wrappers import Response
 
 app = Flask(__name__)
 
 
-@app.before_request
-def before_request() -> None:
-    print("I am a flask middleware before request.")
-
-
 @app.after_request
 def after_request(response):
-    print(f"Flask Cookies: {request.cookies}")
-    print(f"Flask Session: {session.items()}")
-    print("I am a flask middleware after request.")
     return response
 
 
@@ -21,7 +13,7 @@ def after_request(response):
 def index() -> Response:
     return jsonify(
         {
-            "message": "Hello Flask",
+            "message": "Hello flask",
         },
     )
 
@@ -47,5 +39,4 @@ def delete_cookie() -> Response:
 
 @app.get(rule="/cookies")
 def get_cookies() -> Response:
-    print(request.cookies)
     return jsonify({"message": "cookies", "cookies": request.cookies})

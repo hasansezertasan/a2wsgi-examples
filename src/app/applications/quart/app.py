@@ -1,7 +1,5 @@
-from quart.wrappers.response import Response
-
-
 from quart import Quart, jsonify
+from quart.wrappers.response import Response
 
 app = Quart(import_name=__name__)
 

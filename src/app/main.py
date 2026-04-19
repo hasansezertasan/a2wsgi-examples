@@ -1,9 +1,7 @@
 """Application."""
 
-from collections.abc import Awaitable, Callable
-
 from a2wsgi import WSGIMiddleware
-from fastapi import FastAPI, Request, Response
+from fastapi import FastAPI
 from starlette.middleware.sessions import SessionMiddleware
 
 from app.applications.aiohttp.app import app as aiohttp_app
@@ -52,7 +50,10 @@ app = FastAPI(
         "email": "hasansezertasan@gmail.com",
     },
 )
-app.add_middleware(SessionMiddleware, secret_key="SECRET_KEY")
+app.add_middleware(
+    SessionMiddleware,
+    secret_key="demo-secret-key-not-for-production",  # noqa: S106
+)
 app.mount(
     path="/aiohttp",
     app=aiohttp_app,
@@ -157,25 +158,3 @@ app.mount(
     app=starlette_app,
     name="starlette",
 )
-
-
-@app.middleware("http")
-async def middleware(
-    request: Request,
-    call_next: Callable[[Request], Awaitable[Response]],
-) -> Response:
-    """Middleware for FastAPI application.
-
-    Args:
-        request: The incoming request.
-        call_next: The next middleware or route handler.
-
-    Returns:
-        The response after processing.
-    """
-    print("I am a fastapi middleware before request.")
-    response = await call_next(request)
-    print(request.cookies.items())
-    print(request.session.items())
-    print("I am a fastapi middleware after request.")
-    return response

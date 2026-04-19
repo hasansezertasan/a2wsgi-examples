@@ -1,9 +1,16 @@
+"""BlackSheep sub-application mounted via ASGI.
+
+BlackSheep's Application requires its own startup lifecycle and cannot be
+directly mounted as a sub-app. This provides a minimal ASGI shim that uses
+BlackSheep's response helpers for consistent serialization.
+"""
+
 from blacksheep.server.responses import json
 from blacksheep.scribe import send_asgi_response
 
-# TODO @hasansezertasan: This implementation is a temporary workaround, please replace it.
+
 async def app(scope, receive, send):  # type: ignore[override]
-    """ASGI shim that responds using BlackSheep's response helper."""
+    """ASGI shim — BlackSheep requires its own lifecycle to mount as sub-app."""
     if scope["type"] != "http":
         raise RuntimeError("BlackSheep demo only supports HTTP.")
 

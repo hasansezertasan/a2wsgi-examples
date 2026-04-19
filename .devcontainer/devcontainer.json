@@ -30,7 +30,6 @@
         "charliermarsh.ruff",
         "GitHub.copilot",
         "ms-azuretools.vscode-docker",
-        "ms-python.black-formatter",
         "eamodio.gitlens",
         "donjayamanne.githistory",
         "ms-python.debugpy"

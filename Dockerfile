@@ -10,7 +10,9 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --locked --no-dev
 
 FROM python:3.10-slim-bookworm
+RUN groupadd -r app && useradd -r -g app -u 1000 app
 COPY --from=builder --chown=app:app /app /app
 ENV PATH="/app/.venv/bin:$PATH"
 WORKDIR /app
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
+USER app
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
