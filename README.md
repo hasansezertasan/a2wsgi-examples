@@ -15,31 +15,31 @@ A Scenario (that I have faced): You have a Flask application and you want to mig
 
 ### Frameworks
 
-| Framework  | Mount                 | Protocol  | Documentation |
-| ---------- | --------------------- | --------- | ------------- |
-| Flask      | :white_check_mark:    | ASGI/WSGI |               |
-| FastAPI    | :white_check_mark:    | ASGI/WSGI |               |
-| Django     | :white_check_mark:    | ASGI/WSGI |               |
-| Starlette  | :white_check_mark:    | ASGI/WSGI |               |
-| Litestar   | :white_check_mark:    | ASGI/WSGI |               |
-| BlackSheep | :white_check_mark:    | ASGI      |               |
-| Quart      | :white_check_mark:    | ASGI      |               |
-| Falcon     | :white_check_mark:    | WSGI      |               |
-| Sanic      | :white_check_mark:    | ASGI      |               |
-| Connexion  | :white_check_mark:    | ASGI      |               |
-| Bottle     | :white_check_mark:    | WSGI      |               |
-| Robyn      | :white_check_mark:    | WSGI      |               |
-| HUG        | :white_check_mark:    | WSGI      |               |
-| Tornado    | :white_check_mark:    | WSGI      |               |
-| Pyramid    | :white_check_mark:    | WSGI      |               |
-| webapp2    | :white_square_button: |           |               |
-| aiohttp    | :white_check_mark:    | ASGI      |               |
+| Framework  | Mount              | Protocol | Notes                                                 |
+| ---------- | ------------------ | -------- | ----------------------------------------------------- |
+| Flask      | :white_check_mark: | WSGI     | Full app with cookie endpoints                        |
+| FastAPI    | :white_check_mark: | ASGI     | Full app with cookie endpoints                        |
+| Django     | :white_check_mark: | WSGI     |                                                       |
+| Starlette  | :white_check_mark: | ASGI     |                                                       |
+| Litestar   | :white_check_mark: | ASGI     |                                                       |
+| BlackSheep | :white_check_mark: | ASGI     | ASGI shim — requires own lifecycle for full app mount |
+| Quart      | :white_check_mark: | ASGI     |                                                       |
+| Falcon     | :white_check_mark: | WSGI     |                                                       |
+| Sanic      | :white_check_mark: | ASGI     | ASGI shim — manages own event loop                    |
+| Connexion  | :white_check_mark: | ASGI     | Fallback shim when not installed                      |
+| Bottle     | :white_check_mark: | WSGI     |                                                       |
+| Robyn      | :white_check_mark: | WSGI     | WSGI shim — no WSGI/ASGI adapter available            |
+| HUG        | :white_check_mark: | WSGI     |                                                       |
+| Tornado    | :white_check_mark: | WSGI     | WSGI shim — runs own IOLoop, no adapter               |
+| Pyramid    | :white_check_mark: | WSGI     |                                                       |
+| webapp2    | :white_check_mark: | WSGI     | Fallback shim when not installed                      |
+| aiohttp    | :white_check_mark: | ASGI     | ASGI shim — no native ASGI sub-app mounting           |
 
 ### Other tools
 
 | Framework   | Mount                 |
 | ----------- | --------------------- |
-| GradIO      | :white_check_mark:    |
+| Gradio      | :white_check_mark:    |
 | PyWebIO     | :white_check_mark:    |
 | Flet        | :white_check_mark:    |
 | NiceGUI     | :construction:        |
@@ -59,15 +59,30 @@ Emoji key:
 
 ### Requirements
 
-- Docker
-- Docker Compose
+- Python 3.10+
+- [uv](https://docs.astral.sh/uv/)
+- Docker & Docker Compose (optional)
 
-### Steps
+### Local development
 
-1. Clone the repository
-2. Run `docker-compose up --build`
-3. Go to `http://localhost:80/docs` to see the API documentation
-4. Enjoy!
+```bash
+uv sync
+uv run uvicorn app.main:app --reload
+```
+
+### Docker
+
+```bash
+docker compose up --build
+```
+
+Go to `http://localhost:8000/docs` to see the API documentation.
+
+### Running tests
+
+```bash
+uv run pytest tests/ -v
+```
 
 ## Contributing
 
