@@ -38,7 +38,7 @@ dev = [{ include-group = "check" }, { include-group = "test" }]
 check = [
   "ruff==0.14.6",
   "taplo==0.9.3",
-  "ty==0.0.1a27",
+  "ty==0.0.31",
   "typos==1.39.2",
   "validate-pyproject[all]==0.24.1",
   "vulture==2.14",
