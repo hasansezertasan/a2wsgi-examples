@@ -36,7 +36,7 @@ dependencies = [
 [dependency-groups]
 dev = [{ include-group = "check" }, { include-group = "test" }]
 check = [
-  "ruff==0.14.6",
+  "ruff==0.15.11",
   "taplo==0.9.3",
   "ty==0.0.1a27",
   "typos==1.39.2",
