@@ -39,7 +39,7 @@ check = [
   "ruff==0.15.11",
   "taplo==0.9.3",
   "ty==0.0.31",
-  "typos==1.39.2",
+  "typos==1.45.1",
   "validate-pyproject[all]==0.25",
   "vulture==2.14",
 ]
