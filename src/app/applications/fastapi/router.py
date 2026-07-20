@@ -1,3 +1,5 @@
+"""FastAPI router for the root application."""
+
 from typing import Annotated
 
 from fastapi import APIRouter, Path
@@ -10,6 +12,11 @@ router = APIRouter()
 
 @router.get(path="/")
 async def index() -> dict[str, str]:
+    """Handle the root request.
+
+    Returns:
+        dict[str, str]: The response to be sent back.
+    """
     return {
         "message": "Hello World",
     }
@@ -26,6 +33,11 @@ async def application_redirection(
         ),
     ],
 ) -> RedirectResponse:
+    """Redirect to the selected application.
+
+    Returns:
+        RedirectResponse: A redirect to the selected application.
+    """
     return RedirectResponse(
         url=f"/{application.value}",
         status_code=302,

@@ -1,9 +1,11 @@
+"""Bottle example application."""
+
 from bottle import Bottle
 
 app = Bottle()
 
 
-@app.route(path="/")
+@app.route(path="/")  # type: ignore[untyped-decorator]  # pyright: ignore[reportCallIssue]
 def hello() -> dict[str, str]:
     """Handle bottle request.
 

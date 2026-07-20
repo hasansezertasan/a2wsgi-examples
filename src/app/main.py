@@ -1,8 +1,11 @@
 """Application."""
 
+from typing import TYPE_CHECKING, cast
+
 from a2wsgi import WSGIMiddleware
 from fastapi import FastAPI
 from starlette.middleware.sessions import SessionMiddleware
+from starlette.types import ASGIApp
 
 from app.applications.aiohttp.app import app as aiohttp_app
 from app.applications.blacksheep.app import app as blacksheep_app
@@ -18,13 +21,43 @@ from app.applications.gradio.app import app as gradio_app
 from app.applications.hug.app import app as hug_app
 from app.applications.litestar.app import app as litestar_app
 from app.applications.pyramid.app import app as pyramid_app
-from app.applications.quart.app import app as quart_app
 from app.applications.pywebio.app import app as pywebio_app
+from app.applications.quart.app import app as quart_app
 from app.applications.robyn.app import app as robyn_app
 from app.applications.sanic.app import app as sanic_app
 from app.applications.starlette.app import app as starlette_app
 from app.applications.tornado.app import app as tornado_app
 from app.applications.webapp2.app import app as webapp2_app
+
+if TYPE_CHECKING:
+    from a2wsgi.wsgi_typing import WSGIApp
+
+
+def _asgi(application: object) -> ASGIApp:
+    """Assert that a mounted framework app satisfies the ASGI interface.
+
+    The mounted apps are valid ASGI callables at runtime, but their static
+    signatures do not match Starlette's strict ``ASGIApp`` protocol, so this
+    cast bridges the gap that type checkers cannot prove.
+
+    Returns:
+        The same application, typed as ``ASGIApp``.
+    """
+    return cast("ASGIApp", application)
+
+
+def _wsgi(application: object) -> ASGIApp:
+    """Wrap a WSGI app as ASGI for mounting.
+
+    Frameworks expose slightly different WSGI callable signatures than the one
+    ``a2wsgi`` declares, so the input is cast to ``WSGIApp`` before wrapping and
+    the result is bridged to ``ASGIApp`` (see :func:`_asgi`).
+
+    Returns:
+        The WSGI application wrapped as an ``ASGIApp``.
+    """
+    return cast("ASGIApp", WSGIMiddleware(cast("WSGIApp", application)))
+
 
 app = FastAPI(
     title="FastAPI Mount Examples",
@@ -52,21 +85,21 @@ app = FastAPI(
 )
 app.add_middleware(
     SessionMiddleware,
-    secret_key="demo-secret-key-not-for-production",  # noqa: S106
+    secret_key="demo-secret-key-not-for-production",  # ruff:ignore[hardcoded-password-func-arg]
 )
 app.mount(
     path="/aiohttp",
-    app=aiohttp_app,
+    app=_asgi(aiohttp_app),
     name="aiohttp",
 )
 app.mount(
     path="/fastapi",
-    app=fastapi_app,
+    app=_asgi(fastapi_app),
     name="fastapi",
 )
 app.mount(
     path="/blacksheep",
-    app=blacksheep_app,
+    app=_asgi(blacksheep_app),
     name="blacksheep",
 )
 app.include_router(
@@ -75,86 +108,86 @@ app.include_router(
 )
 app.mount(
     path="/flask",
-    app=WSGIMiddleware(flask_app),
+    app=_wsgi(flask_app),
     name="flask",
 )
 app.mount(
     path="/flet",
-    app=flet_app,
+    app=_asgi(flet_app),
     name="flet",
 )
 app.mount(
     path="/django",
-    app=WSGIMiddleware(django_application),
+    app=_wsgi(django_application),
     name="django",
 )
 app.mount(
     path="/bottle",
-    app=WSGIMiddleware(bottle_app),
+    app=_wsgi(bottle_app),
     name="bottle",
 )
 app.mount(
     path="/falcon",
-    app=WSGIMiddleware(falcon_app),
+    app=_wsgi(falcon_app),
     name="falcon",
 )
 app.mount(
     path="/connexion",
-    app=connexion_app,
+    app=_asgi(connexion_app),
     name="connexion",
 )
 app.mount(
     path="/litestar",
-    app=litestar_app,
+    app=_asgi(litestar_app),
     name="litestar",
 )
 app.mount(
     path="/gradio",
-    app=gradio_app,
+    app=_asgi(gradio_app),
     name="gradio",
 )
 app.mount(
     path="/hug",
-    app=WSGIMiddleware(hug_app),
+    app=_wsgi(hug_app),
     name="hug",
 )
 app.mount(
     path="/robyn",
-    app=WSGIMiddleware(robyn_app),
+    app=_wsgi(robyn_app),
     name="robyn",
 )
 app.mount(
     path="/webapp2",
-    app=WSGIMiddleware(webapp2_app),
+    app=_wsgi(webapp2_app),
     name="webapp2",
 )
 app.mount(
     path="/pywebio",
-    app=pywebio_app,
+    app=_asgi(pywebio_app),
     name="pywebio",
 )
 app.mount(
     path="/quart",
-    app=quart_app,
+    app=_asgi(quart_app),
     name="quart",
 )
 app.mount(
     path="/sanic",
-    app=sanic_app,
+    app=_asgi(sanic_app),
     name="sanic",
 )
 app.mount(
     path="/pyramid",
-    app=WSGIMiddleware(pyramid_app),
+    app=_wsgi(pyramid_app),
     name="pyramid",
 )
 app.mount(
     path="/tornado",
-    app=WSGIMiddleware(tornado_app),
+    app=_wsgi(tornado_app),
     name="tornado",
 )
 app.mount(
     path="/starlette",
-    app=starlette_app,
+    app=_asgi(starlette_app),
     name="starlette",
 )

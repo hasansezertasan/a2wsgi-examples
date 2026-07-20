@@ -1,0 +1,39 @@
+# Configuration file for `prek`, a git hook framework written in Rust.
+# See https://prek.j178.dev for more information.
+#:schema https://www.schemastore.org/prek.json
+
+default_install_hook_types = ["pre-commit", "commit-msg"]
+
+# `repo = "builtin"` runs prek's native Rust reimplementations of these
+# pre-commit-hooks: no repo clone, no Python env, works air-gapped. Only hooks
+# on prek's supported list qualify. `debug-statements` is intentionally dropped
+# here because Ruff's flake8-debugger rules (T10, active via `select = ["ALL"]`)
+# already flag stray `breakpoint()`/`pdb` calls.
+[[repos]]
+repo = "builtin"
+hooks = [
+  { id = "check-added-large-files", args = [
+    "--maxkb=1000",
+  ] },
+  { id = "check-toml" },
+  { id = "check-yaml" },
+  { id = "check-json", exclude = '^(\.devcontainer/devcontainer|\.vscode/launch)\.json$' },
+  { id = "check-merge-conflict" },
+  { id = "end-of-file-fixer" },
+  { id = "trailing-whitespace" },
+]
+
+[[repos]]
+repo = "https://github.com/astral-sh/uv-pre-commit"
+rev = "0.11.28"
+hooks = [{ id = "uv-lock" }]
+
+[[repos]]
+repo = "https://github.com/astral-sh/ruff-pre-commit"
+rev = "v0.15.21"
+hooks = [{ id = "ruff-check" }, { id = "ruff-format" }]
+
+[[repos]]
+repo = "https://github.com/crate-ci/typos"
+rev = "v1.48.0"
+hooks = [{ id = "typos" }]

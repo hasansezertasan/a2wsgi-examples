@@ -17,6 +17,7 @@ dependencies = [
   "fastapi>=0.121.3",
   "flask>=3.1.2",
   "flet>=0.28.3",
+  "flet-web>=0.28.3",
   "gradio>=5.50.0",
   "litestar>=2.18.0",
   "nicegui>=3.3.1",
@@ -34,16 +35,28 @@ dependencies = [
 
 
 [dependency-groups]
-dev = [{ include-group = "check" }, { include-group = "test" }]
+dev = [
+  "prek>=0.3.0",
+  "tox>=4.54.0",
+  "tox-uv>=1.35.2",
+  { include-group = "check" },
+  { include-group = "test" },
+]
 check = [
+  "actionlint-py==1.7.12.24",
+  "google-yamlfmt==0.21.0",
+  "mypy==2.2.0",
+  "pyrefly==1.1.1",
+  "pyright==1.1.411",
   "ruff==0.15.22",
+  "slotscheck==0.20.1",
   "taplo==0.9.3",
   "ty==0.0.61",
   "typos==1.48.0",
   "validate-pyproject[all]==0.25",
   "vulture==2.16",
 ]
-test = ["pytest==9.1.1", "pytest-asyncio>=0.26"]
+test = ["coverage[toml]==7.15.0", "pytest==9.1.1", "pytest-asyncio>=0.26"]
 
 
 [build-system]
@@ -74,7 +87,7 @@ preview = true
 
 [tool.ruff.lint]
 fixable = ["ALL"]
-ignore = ["COM812", "CPY", "FIX", "TD", "T201"]
+ignore = ["missing-trailing-comma", "CPY", "FIX", "TD", "print"]
 logger-objects = ["logging_setup.logger"]
 preview = true
 select = ["ALL"]
@@ -101,7 +114,14 @@ convention = "pep257"
 
 
 [tool.ruff.lint.per-file-ignores]
-"tests/*.py" = ['S101']
+"tests/*.py" = ['assert']
+# Example apps mirror each framework's required handler signatures, so unused
+# parameters and mandatory-but-sync `async` handlers are intentional.
+"src/app/applications/*" = [
+  "unused-function-argument", # Unused function argument (ASGI/WSGI/framework signatures)
+  "unused-method-argument",   # Unused method argument (framework handler signatures)
+  "unused-async",             # Unused `async` (framework handlers must be coroutines)
+]
 
 
 [tool.ruff.lint.pyupgrade]
@@ -110,3 +130,195 @@ keep-runtime-typing = true
 
 [tool.ruff.lint.ruff]
 parenthesize-tuple-in-subscript = true
+
+
+# Example apps are driven by framework routing/enums that Vulture cannot see, so
+# raise the confidence floor above those false positives and ignore the fixed
+# ASGI/WSGI handler parameter names that frameworks require but the shims ignore.
+[tool.vulture]
+ignore_names = [
+  "pytestmark",
+  "anyio_backend",
+  "receive",
+  "environ",
+  "args",
+  "kwargs",
+  "WSGIApp",       # TYPE_CHECKING-only import used solely in a string cast annotation
+]
+min_confidence = 80
+paths = ["src", "tests"]
+
+
+[tool.mypy]
+files = ["src"]
+pretty = true
+python_version = "3.14"
+show_error_codes = true
+strict = true
+
+# These example frameworks ship no type information, so treat their imports as
+# untyped rather than failing the strict gate on third-party stub gaps.
+[[tool.mypy.overrides]]
+module = ["bottle", "connexion.*", "django.*", "webapp2"]
+ignore_missing_imports = true
+
+# Gradio attaches its event-listener methods (e.g. `Button.click`) dynamically,
+# so no static type checker can resolve them and their availability even differs
+# between the dev venv and the isolated CI env. The demo is excluded from every
+# type checker below rather than chasing nondeterministic inline suppressions.
+[[tool.mypy.overrides]]
+module = ["app.applications.gradio.app"]
+ignore_errors = true
+
+[tool.pyright]
+include = ["src/app"]
+ignore = ["src/app/applications/gradio/app.py"]
+
+[tool.pyrefly]
+python-version = "3.14"
+project-includes = ["src"]
+project-excludes = ["src/app/applications/gradio/app.py"]
+
+[tool.slotscheck]
+strict-imports = false
+
+[tool.ty.src]
+include = ["src"]
+exclude = ["src/app/applications/gradio/app.py"]
+
+[tool.ty.environment]
+python-version = "3.14"
+
+
+[tool.pytest.ini_options]
+addopts = "-v --tb=short"
+testpaths = ["tests"]
+
+
+[tool.coverage.run]
+source_pkgs = ["app", "tests"]
+branch = true
+parallel = true
+
+[tool.coverage.paths]
+app = ["src/app", "*/app/src/app", "*/site-packages/app"]
+tests = ["tests", "*/app/tests"]
+
+[tool.coverage.report]
+fail_under = 90
+show_missing = true
+exclude_lines = ["no cov", "if __name__ == .__main__.:", "if TYPE_CHECKING:"]
+
+
+[tool.tox]
+env_list = ["style", "3.14", "cov"]
+requires = ["tox>=4", "tox-uv>=1"]
+
+[tool.tox.env_run_base]
+description = "Run the tests under {base_python}"
+runner = "uv-venv-runner"
+package = "wheel"
+wheel_build_env = ".pkg"
+dependency_groups = ["test"]
+use_frozen_constraints = true
+constrain_package_deps = true
+env_tmp_dir = "{toxworkdir}/tmp/{envname}"
+commands = [
+  [
+    "coverage",
+    "run",
+    "-m",
+    "pytest",
+    "--basetemp={env_tmp_dir}",
+    { replace = "posargs", default = [
+    ], extend = true },
+  ],
+]
+
+[tool.tox.env.style]
+base_python = ["3.14"]
+runner = "uv-venv-runner"
+dependency_groups = ["check"]
+description = "Run linters and formatters"
+commands = [
+  [
+    "ruff",
+    "check",
+    "--no-fix",
+  ],
+  [
+    "ruff",
+    "format",
+    "--check",
+  ],
+  [
+    "mypy",
+  ],
+  [
+    "pyright",
+  ],
+  [
+    "ty",
+    "check",
+  ],
+  [
+    "pyrefly",
+    "check",
+  ],
+  [
+    "vulture",
+  ],
+  [
+    "slotscheck",
+    "-m",
+    "app",
+  ],
+  [
+    "taplo",
+    "lint",
+  ],
+  [
+    "taplo",
+    "format",
+    "--check",
+  ],
+  [
+    "validate-pyproject",
+    "pyproject.toml",
+  ],
+  [
+    "typos",
+  ],
+  [
+    "actionlint",
+  ],
+  [
+    "yamlfmt",
+    "-conf",
+    ".github/yamlfmt.yml",
+    "-lint",
+    ".",
+  ],
+]
+
+[tool.tox.env.cov]
+base_python = ["3.14"]
+runner = "uv-venv-runner"
+dependency_groups = ["test"]
+depends = ["3.14"]
+skip_install = true
+description = "Combine coverage data and emit XML/report"
+commands = [
+  [
+    "coverage",
+    "combine",
+  ],
+  [
+    "coverage",
+    "xml",
+  ],
+  [
+    "coverage",
+    "report",
+  ],
+]

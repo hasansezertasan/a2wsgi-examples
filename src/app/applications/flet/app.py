@@ -1,3 +1,5 @@
+"""Flet example application."""
+
 # [Running Flet with FastAPI | Flet](https://flet.dev/docs/guides/python/deploying-web-app/running-flet-with-fastapi/)
 # [Flet for FastAPI | Flet](https://flet.dev/blog/flet-for-fastapi/)
 # [flet/sdk/python/packages/flet-fastapi at main · flet-dev/flet](https://github.com/flet-dev/flet/tree/main/sdk/python/packages/flet-fastapi)
@@ -8,7 +10,8 @@ import flet as ft
 
 
 def main(page: ft.Page) -> None:
+    """Build the Flet page."""
     page.add(ft.Text(value="Hello, Flet!"))
 
 
-app = ft.app(target=main, export_asgi_app=True)
+app = ft.app(target=main, export_asgi_app=True)  # type: ignore[no-untyped-call]

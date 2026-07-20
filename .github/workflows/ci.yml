@@ -1,0 +1,108 @@
+---
+name: CI
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+permissions:
+  contents: read
+jobs:
+  hooks:
+    name: Run prek hooks
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1  # v6.3.0
+        with:
+          python-version-file: ".python-version"
+      - uses: astral-sh/setup-uv@11f9893b081a58869d3b5fccaea48c9e9e46f990  # v8.3.2
+        with:
+          enable-cache: true
+          cache-dependency-glob: |
+            pyproject.toml
+            uv.lock
+      - run: uv run --locked prek run --all-files --show-diff-on-failure
+  style:
+    name: Run linters and formatters
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1  # v6.3.0
+        with:
+          python-version-file: ".python-version"
+      - uses: astral-sh/setup-uv@11f9893b081a58869d3b5fccaea48c9e9e46f990  # v8.3.2
+        with:
+          enable-cache: true
+          cache-dependency-glob: |
+            pyproject.toml
+            uv.lock
+      # The style suite is OS-agnostic (and some type checkers resolve
+      # differently per OS), so run it once here instead of on every matrix OS.
+      - run: uv run --locked tox run -e style
+  ci:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    name: Run Tests on ${{ matrix.os }}
+    timeout-minutes: 15
+    steps:
+      - name: System Info
+        shell: bash
+        run: |
+          if [[ ${{ matrix.os }} == "ubuntu-latest" ]]; then
+              echo "The system is Linux."
+              uname -a || true
+              lsb_release -a || true
+              gcc --version || true
+          elif [[ ${{ matrix.os }} == "macos-latest" ]]; then
+              echo "The system is macOS."
+              sw_vers || true
+              uname -a || true
+              gcc --version || true
+          elif [[ ${{ matrix.os }} == "windows-latest" ]]; then
+              echo "The system is Windows (using a Unix-like environment)."
+              systeminfo || true
+          else
+              echo "Unknown OS: $OS_TYPE"
+              exit 1
+          fi
+      - name: Environment Info
+        run: |
+          env || true
+      - name: Checkout repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1  # v6.3.0
+        with:
+          python-version-file: ".python-version"
+      - name: Setup uv
+        id: setup-uv
+        uses: astral-sh/setup-uv@11f9893b081a58869d3b5fccaea48c9e9e46f990  # v8.3.2
+        with:
+          enable-cache: true
+          cache-dependency-glob: |
+            pyproject.toml
+            uv.lock
+      - name: Restore cache
+        if: steps.setup-uv.outputs.cache-hit == 'true'
+        run: echo "Cache was restored"
+      - name: Run the tests
+        run: uv run --locked tox run -e 3.14,cov
+      - name: Upload coverage to Codecov
+        if: matrix.os == 'ubuntu-latest'
+        uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f  # v7.0.0
+        with:
+          files: ./coverage.xml
+          token: ${{ secrets.CODECOV_TOKEN }}

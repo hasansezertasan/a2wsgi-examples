@@ -1,3 +1,5 @@
+"""Gradio example application."""
+
 # [Embedding gradio within a fastapi app · Issue #1608 · gradio-app/gradio](https://github.com/gradio-app/gradio/issues/1608#issuecomment-1247038215)
 import gradio as gr
 

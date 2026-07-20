@@ -1,0 +1,7 @@
+---
+line_ending: lf
+gitignore_excludes: true
+formatter:
+  type: basic
+  include_document_start: true
+  pad_line_comments: 2

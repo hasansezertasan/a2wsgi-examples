@@ -5,17 +5,28 @@ another ASGI server. This provides a minimal ASGI shim that uses Sanic's
 response helpers for consistent serialization.
 """
 
+from collections.abc import Awaitable, Callable
+
 from sanic.response import json as sanic_json
 
 
-async def app(scope, receive, send):  # type: ignore[override]
-    """ASGI shim — Sanic cannot be mounted as a sub-app."""
+async def app(
+    scope: dict[str, object],
+    receive: object,
+    send: Callable[..., Awaitable[None]],
+) -> None:
+    """ASGI shim — Sanic cannot be mounted as a sub-app.
+
+    Raises:
+        RuntimeError: If the ASGI scope type is not ``http``.
+    """
     if scope["type"] != "http":
-        raise RuntimeError("Sanic demo only supports HTTP.")
+        msg = "Sanic demo only supports HTTP."
+        raise RuntimeError(msg)
 
     response = sanic_json({"message": "Hello sanic"})
     headers = [
-        (b"content-type", response.content_type.encode("latin-1")),
+        (b"content-type", response.content_type.encode("latin-1")),  # type: ignore[union-attr]  # pyright: ignore[reportOptionalMemberAccess]  # pyrefly: ignore  # ty: ignore[unresolved-attribute]
     ]
     await send(
         {

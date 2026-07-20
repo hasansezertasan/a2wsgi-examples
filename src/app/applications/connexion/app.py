@@ -1,11 +1,19 @@
+"""Connexion example application."""
+
+from collections.abc import Awaitable, Callable
+
 try:
     import connexion
 except ImportError:  # pragma: no cover - optional dependency
-    connexion = None
+    connexion = None  # ty: ignore[invalid-assignment]
 
 
 def hello() -> dict[str, str]:
-    """Handle Connexion request."""
+    """Handle Connexion request.
+
+    Returns:
+        dict[str, str]: The response to be sent back.
+    """
     return {"message": "Hello connexion"}
 
 
@@ -43,12 +51,22 @@ if connexion is not None:
         strict_validation=False,
     )
     # Expose the ASGI-compatible Connexion app.
-    app = connexion_app  # type: ignore[assignment]
+    app = connexion_app  # pyright: ignore[reportAssignmentType]
 else:
-    async def app(scope, receive, send):  # type: ignore[override]
-        """Fallback ASGI app returning the expected payload without Connexion installed."""
+
+    async def app(
+        scope: dict[str, object],
+        receive: object,
+        send: Callable[..., Awaitable[None]],
+    ) -> None:
+        """Fallback ASGI app when Connexion is not installed.
+
+        Raises:
+            RuntimeError: If the ASGI scope type is not ``http``.
+        """
         if scope["type"] != "http":
-            raise RuntimeError("Connexion demo only supports HTTP.")
+            msg = "Connexion demo only supports HTTP."
+            raise RuntimeError(msg)
         payload = b'{"message": "Hello connexion"}'
         headers = [
             (b"content-type", b"application/json"),

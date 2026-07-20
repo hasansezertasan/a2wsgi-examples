@@ -1,16 +1,19 @@
+"""Django example application."""
+
 from django.conf import settings
 from django.core.wsgi import get_wsgi_application
+from django.http.request import HttpRequest
 from django.http.response import JsonResponse
 from django.urls import path
 
 settings.configure(
     DEBUG=True,
     ROOT_URLCONF=__name__,
-    SECRET_KEY="demo-secret-key-not-for-production",  # noqa: S105
+    SECRET_KEY="demo-secret-key-not-for-production",  # ruff:ignore[hardcoded-password-func-arg]
 )
 
 
-def index(request) -> JsonResponse:
+def index(request: HttpRequest) -> JsonResponse:
     """Handle django request.
 
     Args:

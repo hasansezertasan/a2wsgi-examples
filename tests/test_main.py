@@ -11,7 +11,11 @@ from app.main import app
 
 @pytest.fixture(scope="module")
 def client() -> TestClient:
-    """Create a test client for the application."""
+    """Create a test client for the application.
+
+    Returns:
+        TestClient: The test client for the application.
+    """
     return TestClient(app)
 
 
