@@ -1,3 +1,5 @@
+"""Litestar example application."""
+
 from litestar import Litestar, get
 
 

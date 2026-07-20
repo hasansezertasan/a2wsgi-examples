@@ -1,9 +1,15 @@
-from pyramid.config import Configurator
-from pyramid.response import Response
+"""Pyramid example application."""
+
+from pyramid.config import Configurator  # type: ignore[import-untyped]
+from pyramid.response import Response  # type: ignore[import-untyped]
 
 
-def hello_pyramid(request):  # noqa: ANN001
-    """Handle Pyramid request."""
+def hello_pyramid(request: object) -> Response:
+    """Handle Pyramid request.
+
+    Returns:
+        Response: The response to be sent back.
+    """
     return Response(json_body={"message": "Hello pyramid"})
 
 
