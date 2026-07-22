@@ -51,7 +51,7 @@ check = [
   "ruff==0.15.22",
   "slotscheck==0.20.1",
   "taplo==0.9.3",
-  "ty==0.0.61",
+  "ty==0.0.62",
   "typos==1.48.0",
   "validate-pyproject[all]==0.25",
   "vulture==2.16",
