@@ -53,7 +53,7 @@ check = [
   "taplo==0.9.3",
   "ty==0.0.70",
   "typos==1.49.0",
-  "validate-pyproject[all]==0.25",
+  "validate-pyproject[all]==0.26",
   "vulture==2.16",
 ]
 test = ["coverage[toml]==7.15.4", "pytest==9.1.1", "pytest-asyncio>=0.26"]
