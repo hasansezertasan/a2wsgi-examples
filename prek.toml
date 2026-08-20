@@ -30,7 +30,7 @@ hooks = [{ id = "uv-lock" }]
 
 [[repos]]
 repo = "https://github.com/astral-sh/ruff-pre-commit"
-rev = "v0.16.3"
+rev = "v0.16.4"
 hooks = [{ id = "ruff-check" }, { id = "ruff-format" }]
 
 [[repos]]
