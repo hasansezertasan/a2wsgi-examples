@@ -6,7 +6,7 @@ from collections.abc import Callable
 try:
     import webapp2
 except ImportError:  # pragma: no cover - optional dependency
-    webapp2 = None  # ty: ignore[invalid-assignment]
+    webapp2 = None
 
 
 if webapp2 is not None:

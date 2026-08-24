@@ -5,7 +5,7 @@ from collections.abc import Awaitable, Callable
 try:
     import connexion
 except ImportError:  # pragma: no cover - optional dependency
-    connexion = None  # ty: ignore[invalid-assignment]
+    connexion = None
 
 
 def hello() -> dict[str, str]:
