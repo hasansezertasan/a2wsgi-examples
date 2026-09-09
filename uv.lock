@@ -343,7 +343,7 @@ check = [
     { name = "google-yamlfmt", specifier = "==0.21.0" },
     { name = "mypy", specifier = "==2.3.1" },
     { name = "pyrefly", specifier = "==1.2.0" },
-    { name = "pyright", specifier = "==1.1.412" },
+    { name = "pyright", specifier = "==1.1.413" },
     { name = "ruff", specifier = "==0.16.6" },
     { name = "slotscheck", specifier = "==0.21.0" },
     { name = "taplo", specifier = "==0.9.3" },
@@ -359,7 +359,7 @@ dev = [
     { name = "mypy", specifier = "==2.3.1" },
     { name = "prek", specifier = ">=0.3.0" },
     { name = "pyrefly", specifier = "==1.2.0" },
-    { name = "pyright", specifier = "==1.1.412" },
+    { name = "pyright", specifier = "==1.1.413" },
     { name = "pytest", specifier = "==9.1.1" },
     { name = "pytest-asyncio", specifier = ">=0.26" },
     { name = "ruff", specifier = "==0.16.6" },
@@ -3599,15 +3599,15 @@ wheels = [
 
 [[package]]
 name = "pyright"
-version = "1.1.412"
+version = "1.1.413"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "nodeenv" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/1d/86/d52ff958a567992004f8ba8ef7e02eba6cd4d50f8385dcfe8222752f66a5/pyright-1.1.412.tar.gz", hash = "sha256:9905e44666ee23f25f1741df44811063bebbb7f700da1845a21cb7f944a8ce53", size = 4126890, upload-time = "2026-09-09T17:52:56.71Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/4a/eb/343ee766d0a6a9259366b07dba28543753a53ae76dc6d660e5f97df56411/pyright-1.1.413.tar.gz", hash = "sha256:40357dc6bd967e87a62877574ae79195d44e00d02917c8230e1d4b94ea88fccb", size = 4127365, upload-time = "2026-09-09T18:36:21.337Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/6b/e5/201e83185424bceebbb736e12bea356f9045325b9c063a43d49b1a097c74/pyright-1.1.412-py3-none-any.whl", hash = "sha256:8c8da2e8e8ecb21c59b5ccd17a19dda9af00a9f5492cc767b2e42638ce803b08", size = 6196912, upload-time = "2026-09-09T17:52:55.02Z" },
+    { url = "https://files.pythonhosted.org/packages/a1/0a/dad5520e95b00ff65fba1d0b538e4fe0e5a5e33117829043bf8f523ecfb5/pyright-1.1.413-py3-none-any.whl", hash = "sha256:1d74426e431b49f803735632910cc3db7611f904693b7775224ae752f389cf4f", size = 6197123, upload-time = "2026-09-09T18:36:19.23Z" },
 ]
 
 [[package]]
