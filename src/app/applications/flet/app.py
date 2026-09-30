@@ -14,4 +14,4 @@ def main(page: ft.Page) -> None:
     page.add(ft.Text(value="Hello, Flet!"))
 
 
-app = ft.app(target=main, export_asgi_app=True)  # type: ignore[no-untyped-call]
+app = ft.run(main, export_asgi_app=True)
