@@ -276,10 +276,14 @@ commands = [
   [
     "taplo",
     "lint",
+    "--config",
+    ".config/.taplo.toml",
   ],
   [
     "taplo",
     "format",
+    "--config",
+    ".config/.taplo.toml",
     "--check",
   ],
   [
