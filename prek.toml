@@ -3,6 +3,9 @@
 #:schema https://www.schemastore.org/prek.json
 
 default_install_hook_types = ["pre-commit", "commit-msg"]
+# Hooks without an explicit `stages` run at commit only. prek treats an unset
+# `default_stages` as *every* stage.
+default_stages = ["pre-commit"]
 
 # `repo = "builtin"` runs prek's native Rust reimplementations of these
 # pre-commit-hooks: no repo clone, no Python env, works air-gapped. Only hooks
@@ -18,7 +21,19 @@ hooks = [
   { id = "check-toml" },
   { id = "check-yaml" },
   { id = "check-json", exclude = '^(\.devcontainer/devcontainer|\.vscode/launch)\.json$' },
-  { id = "check-merge-conflict" },
+  { id = "check-merge-conflict", args = [
+    "--assume-in-merge",
+  ] },
+  { id = "check-case-conflict" },
+  { id = "detect-private-key" },
+  { id = "check-symlinks" },
+  { id = "check-executables-have-shebangs" },
+  { id = "fix-byte-order-marker" },
+  # `.gitignore` carries a literal CR in its macOS `Icon\r` pattern; "fixing" it
+  # would break that rule.
+  { id = "mixed-line-ending", args = [
+    "--fix=auto",
+  ], exclude = '^\.gitignore$' },
   { id = "end-of-file-fixer" },
   { id = "trailing-whitespace" },
 ]
