@@ -25,7 +25,8 @@ jobs:
           BRANCH_NAME: ${{ github.head_ref }}
         run: |
           # Conventional Branch (https://conventionalbranch.org/): a type prefix
-          # followed by a short description. Purpose prefixes (long or short
+          # followed by a short description (the trunk names main, master and develop
+          # are valid on their own). Purpose prefixes (long or short
           # form) and AI-agent prefixes are exactly the set the spec defines.
           # renovate/* and release-please--* are whitelisted so the automated
           # dependency and release PRs are never blocked by this check.
@@ -34,7 +35,7 @@ jobs:
           # Description: lowercase alphanumerics with single '-' or '.' separators,
           # never leading, trailing, or consecutive (per the spec's naming rules).
           desc='[a-z0-9]+([.-][a-z0-9]+)*'
-          pattern="^(renovate/.+|release-please--.+|(${purpose}|${agents})/${desc})$"
+          pattern="^(main|master|develop|renovate/.+|release-please--.+|(${purpose}|${agents})/${desc})$"
           if [[ "${BRANCH_NAME}" =~ ${pattern} ]]; then
             echo "Branch \"${BRANCH_NAME}\" follows the Conventional Branch format."
           else

@@ -2,7 +2,7 @@
 # See https://prek.j178.dev for more information.
 #:schema https://www.schemastore.org/prek.json
 
-default_install_hook_types = ["pre-commit", "commit-msg"]
+default_install_hook_types = ["pre-commit", "commit-msg", "pre-push"]
 # Hooks without an explicit `stages` run at commit only. prek treats an unset
 # `default_stages` as *every* stage.
 default_stages = ["pre-commit"]

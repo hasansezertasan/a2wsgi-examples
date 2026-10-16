@@ -25,4 +25,5 @@ jobs:
         with:
           # Block PRs that introduce high or critical severity vulnerabilities.
           fail-on-severity: high
-          comment-summary-in-pr: on-failure
+          # Fork PRs get a read-only token, so the action cannot post a comment there.
+          comment-summary-in-pr: ${{ github.event.pull_request.head.repo.fork && 'never' || 'on-failure' }}

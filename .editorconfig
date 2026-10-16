@@ -45,7 +45,3 @@ max_line_length = unset
 
 [*.{diff,patch}]
 trim_trailing_whitespace = false
-
-# Ignore files and directories: node_modules, .git, .vscode, .DS_Store, .venv, .pytest_cache, .ruff_cache
-[**]
-ignore = node_modules, .git, .vscode, .DS_Store, .venv, .pytest_cache, .ruff_cache
