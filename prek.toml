@@ -52,3 +52,19 @@ hooks = [{ id = "ruff-check" }, { id = "ruff-format" }]
 repo = "https://github.com/crate-ci/typos"
 rev = "v1.51.1"
 hooks = [{ id = "typos" }]
+
+# zizmor statically audits the GitHub Actions workflows for security issues. This
+# hook is the blocking gate; .github/workflows/zizmor.yml uploads findings to the
+# Security tab as a non-blocking dashboard.
+[[repos]]
+repo = "https://github.com/zizmorcore/zizmor-pre-commit"
+rev = "v1.29.0"
+hooks = [{ id = "zizmor" }]
+
+[[repos]]
+repo = "https://github.com/commitizen-tools/commitizen"
+rev = "v4.17.0"
+hooks = [
+  { id = "commitizen" },
+  { id = "commitizen-branch", stages = ["pre-push"] },
+]
