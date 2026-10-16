@@ -5,14 +5,9 @@ coverage:
       default:
         target: auto
         threshold: 1%
-    patch:
-      default:
-        target: auto
-        threshold: 1%
-comment:
-  layout: "reach, diff, flags, files"
-  behavior: default
-  require_changes: false
-flag_management:
-  default_rules:
-    carryforward: true
+        paths:
+          - src
+        if_ci_failed: error
+        informational: false
+    patch: off
+comment: true

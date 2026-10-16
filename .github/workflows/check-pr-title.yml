@@ -1,12 +1,17 @@
 ---
 name: Lint PR
 on:
-  pull_request_target:
+  # pull_request_target is required so this check can post its sticky comment on
+  # PRs from forks (a plain `pull_request` run gets a read-only token). It is safe
+  # here: no PR code is checked out or executed — the pinned action only reads the
+  # PR title, and the untrusted error_message is passed via a step output.
+  pull_request_target:  # zizmor: ignore[dangerous-triggers]
     types: [opened, edited, synchronize, reopened]
 jobs:
   main:
     name: Validate PR title
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       pull-requests: write
     steps:

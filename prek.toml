@@ -2,7 +2,10 @@
 # See https://prek.j178.dev for more information.
 #:schema https://www.schemastore.org/prek.json
 
-default_install_hook_types = ["pre-commit", "commit-msg"]
+default_install_hook_types = ["pre-commit", "commit-msg", "pre-push"]
+# Hooks without an explicit `stages` run at commit only. prek treats an unset
+# `default_stages` as *every* stage.
+default_stages = ["pre-commit"]
 
 # `repo = "builtin"` runs prek's native Rust reimplementations of these
 # pre-commit-hooks: no repo clone, no Python env, works air-gapped. Only hooks
@@ -18,22 +21,50 @@ hooks = [
   { id = "check-toml" },
   { id = "check-yaml" },
   { id = "check-json", exclude = '^(\.devcontainer/devcontainer|\.vscode/launch)\.json$' },
-  { id = "check-merge-conflict" },
+  { id = "check-merge-conflict", args = [
+    "--assume-in-merge",
+  ] },
+  { id = "check-case-conflict" },
+  { id = "detect-private-key" },
+  { id = "check-symlinks" },
+  { id = "check-executables-have-shebangs" },
+  { id = "fix-byte-order-marker" },
+  # `.gitignore` carries a literal CR in its macOS `Icon\r` pattern; "fixing" it
+  # would break that rule.
+  { id = "mixed-line-ending", args = [
+    "--fix=auto",
+  ], exclude = '^\.gitignore$' },
   { id = "end-of-file-fixer" },
   { id = "trailing-whitespace" },
 ]
 
 [[repos]]
 repo = "https://github.com/astral-sh/uv-pre-commit"
-rev = "0.13.0"
+rev = "0.13.1"
 hooks = [{ id = "uv-lock" }]
 
 [[repos]]
 repo = "https://github.com/astral-sh/ruff-pre-commit"
-rev = "v0.17.0"
+rev = "v0.17.1"
 hooks = [{ id = "ruff-check" }, { id = "ruff-format" }]
 
 [[repos]]
 repo = "https://github.com/crate-ci/typos"
 rev = "v1.51.1"
 hooks = [{ id = "typos" }]
+
+# zizmor statically audits the GitHub Actions workflows for security issues. This
+# hook is the blocking gate; .github/workflows/zizmor.yml uploads findings to the
+# Security tab as a non-blocking dashboard.
+[[repos]]
+repo = "https://github.com/zizmorcore/zizmor-pre-commit"
+rev = "v1.31.1"
+hooks = [{ id = "zizmor" }]
+
+[[repos]]
+repo = "https://github.com/commitizen-tools/commitizen"
+rev = "v4.19.2"
+hooks = [
+  { id = "commitizen" },
+  { id = "commitizen-branch", stages = ["pre-push"] },
+]

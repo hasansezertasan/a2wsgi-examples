@@ -119,8 +119,8 @@ convention = "pep257"
 # parameters and mandatory-but-sync `async` handlers are intentional.
 "src/app/applications/*" = [
   "unused-function-argument", # Unused function argument (ASGI/WSGI/framework signatures)
-  "unused-method-argument",   # Unused method argument (framework handler signatures)
-  "unused-async",             # Unused `async` (framework handlers must be coroutines)
+  "unused-method-argument", # Unused method argument (framework handler signatures)
+  "unused-async", # Unused `async` (framework handlers must be coroutines)
 ]
 
 
@@ -143,7 +143,7 @@ ignore_names = [
   "environ",
   "args",
   "kwargs",
-  "WSGIApp",       # TYPE_CHECKING-only import used solely in a string cast annotation
+  "WSGIApp", # TYPE_CHECKING-only import used solely in a string cast annotation
 ]
 min_confidence = 80
 paths = ["src", "tests"]
