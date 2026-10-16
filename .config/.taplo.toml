@@ -1,1 +1,12 @@
 exclude = [".tox/**", ".venv/**"]
+
+# Keep the canonical form independent of how long values happen to be, so
+# `taplo format --check` stays a strict gate:
+# - Array auto expand/collapse would reflow arrays purely by width.
+# - Comment alignment would pad trailing comments to the longest entry in the
+#   run, so a Renovate bump on one line could break the gate on a line nothing
+#   touched.
+[formatting]
+array_auto_expand = false
+array_auto_collapse = false
+align_comments = false
