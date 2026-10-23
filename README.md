@@ -59,7 +59,7 @@ Emoji key:
 
 ### Requirements
 
-- Python 3.10+
+- Python 3.11+
 - [uv](https://docs.astral.sh/uv/)
 - Docker & Docker Compose (optional)
 

@@ -7,7 +7,7 @@ authors = [{ name = "Hasan Sezer Taşan", email = "hasansezertasan@gmail.com" }]
 maintainers = [
   { name = "Hasan Sezer Taşan", email = "hasansezertasan@gmail.com" },
 ]
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = [
   "a2wsgi>=1.10.10",
   "blacksheep>=2.4.5",
@@ -70,7 +70,7 @@ output-format = "full"
 preview = true
 show-fixes = true
 src = ["src", "tests", "examples"]
-target-version = "py310"
+target-version = "py311"
 unsafe-fixes = true
 
 
