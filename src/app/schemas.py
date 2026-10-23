@@ -3,7 +3,7 @@
 import enum
 
 
-class Applications(str, enum.Enum):
+class Applications(enum.StrEnum):
     """Enum for supported applications."""
 
     BLACKSHEEP = "blacksheep"
