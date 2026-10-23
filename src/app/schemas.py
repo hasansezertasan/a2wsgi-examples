@@ -3,7 +3,7 @@
 import enum
 
 
-class Applications(enum.StrEnum):
+class Applications(str, enum.Enum):  # ruff: ignore[replace-str-enum]
     """Enum for supported applications."""
 
     BLACKSHEEP = "blacksheep"
