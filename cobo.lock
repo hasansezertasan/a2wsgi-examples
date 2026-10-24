@@ -1,0 +1,64 @@
+version = 1
+
+[[fragment]]
+path = ".gitignore"
+source = "gitignore"
+update = true
+
+  [[fragment.files]]
+  name = "JetBrains"
+  path = "Global/JetBrains.gitignore"
+  commit = "0e5d690153ca3da8a4a1aef2d053406f408f531c"
+  blob = "6e0af9c4ea28faa6546c1f7a02e98eccb4948192"
+
+  [[fragment.files]]
+  name = "Linux"
+  path = "Global/Linux.gitignore"
+  commit = "0e5d690153ca3da8a4a1aef2d053406f408f531c"
+  blob = "35ea8c67239c3542d012454da948096a52d1bf06"
+
+  [[fragment.files]]
+  name = "macOS"
+  path = "Global/macOS.gitignore"
+  commit = "0e5d690153ca3da8a4a1aef2d053406f408f531c"
+  blob = "e5328c061b39eb6a3ab3a4310a2a0a0dfb3b2ec8"
+
+  [[fragment.files]]
+  name = "Python"
+  path = "Python.gitignore"
+  commit = "0e5d690153ca3da8a4a1aef2d053406f408f531c"
+  blob = "6f596e17917419c463b0d15bf1f0bce19b8918eb"
+
+  [[fragment.files]]
+  name = "VisualStudioCode"
+  path = "Global/VisualStudioCode.gitignore"
+  commit = "0e5d690153ca3da8a4a1aef2d053406f408f531c"
+  blob = "12ee62bbb7c5fb3449386f0580fe3ca09a64d173"
+
+  [[fragment.files]]
+  name = "Windows"
+  path = "Global/Windows.gitignore"
+  commit = "0e5d690153ca3da8a4a1aef2d053406f408f531c"
+  blob = "84bffec74db3273565f4c9b3e9ffcc216cec1611"
+
+[[fragment]]
+path = ".gitattributes"
+source = "gitattributes"
+update = true
+
+  [[fragment.files]]
+  name = "Common"
+  path = "Common.gitattributes"
+  commit = "2c20a14833a5ab196c7fc3effcc72ef4e895f4d4"
+  blob = "e3d22ec082fb07e097dbe8bfc58d182b7983d0a5"
+
+[[fragment]]
+path = ".editorconfig"
+source = "editorconfig"
+update = true
+
+  [[fragment.files]]
+  name = "Generic"
+  path = "Generic.editorconfig"
+  commit = "f64e011b04669db816b8075f3a9d4f3beb58c9d6"
+  blob = "b1b86bb89af2ed0a690f506273637d5e31a62c58"
