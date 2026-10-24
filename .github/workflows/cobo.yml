@@ -30,3 +30,6 @@ jobs:
           # This repository has no label manifest, so the action's default `cobo`
           # label would not exist.
           pr-labels: ""
+          # Without this a fragment that cannot be re-rendered leaves the job green and
+          # the fragment silently stale (no diff means no PR either).
+          fail-on-sync-error: "true"
