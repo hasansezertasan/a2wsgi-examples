@@ -40,17 +40,17 @@ hooks = [
 
 [[repos]]
 repo = "https://github.com/astral-sh/uv-pre-commit"
-rev = "0.13.6"
+rev = "0.13.9"
 hooks = [{ id = "uv-lock" }]
 
 [[repos]]
 repo = "https://github.com/astral-sh/ruff-pre-commit"
-rev = "v0.17.3"
+rev = "v0.17.5"
 hooks = [{ id = "ruff-check" }, { id = "ruff-format" }]
 
 [[repos]]
 repo = "https://github.com/crate-ci/typos"
-rev = "v1.51.1"
+rev = "v1.52.2"
 hooks = [{ id = "typos" }]
 
 # zizmor statically audits the GitHub Actions workflows for security issues. This
@@ -58,7 +58,7 @@ hooks = [{ id = "typos" }]
 # Security tab as a non-blocking dashboard.
 [[repos]]
 repo = "https://github.com/zizmorcore/zizmor-pre-commit"
-rev = "v1.31.1"
+rev = "v1.32.0"
 hooks = [{ id = "zizmor" }]
 
 [[repos]]
